@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GYMS_TR
+build_property.RootNamespace = GYMS_TR
+build_property.ProjectDir = C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 6.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Categoria/CategoriaIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXENhdGVnb3JpYUluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Categoria/Crearcategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXENyZWFyY2F0ZWdvcmlhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Categoria/EditarCategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEVkaXRhckNhdGVnb3JpYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Categoria/EliminarCategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhXEVsaW1pbmFyQ2F0ZWdvcmlhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Producto/ProductoIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cUHJvZHVjdG9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Producto/UpsertProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cVXBzZXJ0UHJvZHVjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/TipoAplicacion/CrearTipoAplicacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0FwbGljYWNpb25cQ3JlYXJUaXBvQXBsaWNhY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/TipoAplicacion/EditarTipoAplicacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0FwbGljYWNpb25cRWRpdGFyVGlwb0FwbGljYWNpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/TipoAplicacion/EliminarTipoAplicacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0FwbGljYWNpb25cRWxpbWluYXJUaXBvQXBsaWNhY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/TipoAplicacion/TipoAplicacionIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb0FwbGljYWNpb25cVGlwb0FwbGljYWNpb25JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nask9/OneDrive/Desktop/GYMS_TR/GYMS_TR/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-a4hmn84krx

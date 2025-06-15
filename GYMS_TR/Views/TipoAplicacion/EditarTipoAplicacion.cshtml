@@ -1,0 +1,39 @@
+﻿@model GYMS_TR.Models.TipoAplicacion
+@{
+    ViewData["Title"] = "EditarTipoAplicacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditarTipoAplicacion</h1>
+
+<form method="post" asp-action="EditarTipoAplicacion">
+     <input asp-for="Id" hidden/>
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Editar TipoAplicacion</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Nombre" class="form-label">Nombre TipoAplicacion</label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex" class="btn btn-success">Regresar</a>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+@section Scripts{
+    @{<partial name="_ValidationScriptsPartial"/>}
+}

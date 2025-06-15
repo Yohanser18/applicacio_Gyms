@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\GYMS_TR.props" />
+</Project>

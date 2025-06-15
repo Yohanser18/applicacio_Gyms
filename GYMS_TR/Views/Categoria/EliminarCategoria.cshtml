@@ -1,0 +1,41 @@
+﻿@model GYMS_TR.Models.Categoria
+@{
+    ViewData["Title"] = "EliminarCategoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EliminarCategoria</h1>
+
+<form method="post" asp-action="EliminarCategoria">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        
+        <div class="form-group row">
+            <h2 class="text-danger pl-3">Esta seguro de Eliminar la Categoria</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="NombreCategoria" class="form-label">Nombre Categoria</label>
+                    <input asp-for="NombreCategoria" disabled class="form-control" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="MostrasOrden" class="form-label">Orden</label>
+                    <input asp-for="MostrasOrden" disabled class="form-control" />
+                </div>
+            </div>
+            <br />
+
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-controller="Categoria" asp-action="CategoriaIndex" class="btn btn-success">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+

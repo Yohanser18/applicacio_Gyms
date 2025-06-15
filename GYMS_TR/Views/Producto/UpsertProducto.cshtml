@@ -1,0 +1,109 @@
+﻿@model GYMS_TR.Models.ViewModels.ProductoVM
+@{
+    var titulo = "Crear un nuevo producto";@*Con esta varioble nostros vamos a identificar si que remos crear una nuevo producto*@
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UpsertProducto</h1>
+
+<form method="post" asp-action="UpsertProducto" enctype="multipart/form-data">@*esta clase es para ponser manajar imagenes desde la vista*@
+    @if(Model.Producto.Id != 0)//estamos dicendo que si el Id es distinto de cero vamos a pasar a editar en la vista 
+    {
+        titulo = "Editar un producto";
+        <input asp-for="Producto.Id" hidden/>//Aqui estamos pasando por el input el Id para que haga la edicion por el id y estamos ocultando ese input//
+    }
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <h2 class="text-info">@titulo</h2>@*Aqui la varible titulo va a cambiar las acciones que queramos hacer*@
+        </div>
+
+        <div class="row">
+           
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Producto.NombreProducto" class="form-label">Nombre Producto</label>
+                        <input asp-for="Producto.NombreProducto" class="form-control" />
+                        <span asp-validation-for="Producto.NombreProducto" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Producto.DescripcionCorta" class="form-label">Descripcion Corta</label>
+                        <input asp-for="Producto.DescripcionCorta" class="form-control" />
+                        <span asp-validation-for="Producto.DescripcionCorta" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Producto.Precio" class="form-label">Precio</label>
+                        <input asp-for="Producto.Precio" class="form-control" />
+                        <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label asp-for="Producto.DescripcionPruducto" class="form-label">Descripcion Producto</label>
+                        <input asp-for="Producto.DescripcionPruducto" class="form-control" />
+                        <span asp-validation-for="Producto.DescripcionPruducto" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Producto.ImageneUrl" class="form-label">Imagen</label>
+                        <input type="file" name="files" id="imagenId" asp-for="Producto.ImageneUrl" class="form-control" />
+                        <span asp-validation-for="Producto.ImageneUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Producto.CategoriaId" class="form-label">Categoria</label>
+                        <select asp-for="Producto.CategoriaId" asp-items="@Model.CategoriaLista" class="form-select">
+                            <option disabled selected>-- Seleccine una Categoria</option>
+                         </select>
+                    </div>
+
+                    <div  class="col-md-6">
+                        <label  asp-for="Producto.TipoAplicacionId" class="form-label">Tipo Aplicacion</label>
+                        <select asp-for="Producto.TipoAplicacionId" asp-items="@Model.TipoAplicacionLista" class="form-select">
+                              <option disabled selected>-- Tipo un Aplicacion</option>
+                        </select>
+                    </div>
+
+                </div>
+                <br />
+
+                <div class="d-grid gap-2 d-md-block">
+                    @if (Model.Producto.Id != 0) // estamos dicendo que si el Id es distinto de cero vamos a pasar a editar en la vista
+                    {
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    }
+                    else
+                    {
+                        <button type="submit"  onclick="return validarImagen()" class="btn btn-primary">Crear Nuevo</button>
+                    }
+                    <a asp-controller="Producto" asp-action="ProductoIndex" class="btn btn-success">Regresar</a>
+                </div>
+
+            </div>
+             
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts {
+    @{<partial name="_ValidationScriptsPartial"/>}
+
+    <script>
+
+        function validarImagen(){
+            if(document.getElementById("imagenId").value==""){
+                swal("Error", "Seleccione una imagen!", "error");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+}
