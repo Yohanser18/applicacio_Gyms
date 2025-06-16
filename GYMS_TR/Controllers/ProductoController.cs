@@ -11,9 +11,12 @@ namespace GYMS_TR.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ProductoController(ApplicationDbContext context)
+        private readonly IWebHostEnvironment _webHostEnvironment;//Esto es necesario para poder recibir ;a imagenes desde la vista hacia el controlador//
+
+        public ProductoController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult ProductoIndex()
@@ -76,6 +79,39 @@ namespace GYMS_TR.Controllers
             }
 
             return View(productoVM.Producto);//la vista tiene producto que haga la accion de editar//
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpsertProducto(ProductoVM productoVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var files = HttpContext.Request.Form.Files;//este metodo es que va a resibir la imgende desde la vista//
+                string wbRootPath = _webHostEnvironment.WebRootPath;//Aqui estamos diciendo que nos guarde la imagen en esta ruta//
+
+                if (productoVM.Producto.Id == 0)//Aqui estamos deciendo que si el id del producto es igual a cero que nos cree un nuevo producto//
+                {
+                    //crear producto nuevo//
+                    string upload = wbRootPath + WC.ImagenRuta;//Aqui esta guardando la imagen en la ruta que creamos en la carpeta wwwroot//
+                    string fileName = Guid.NewGuid().ToString();// esta es para que le a signe un id a nuestra imagenes//
+                    string extension = Path.GetExtension(files[0].FileName);//Aqui estamos recibiendo la imagen que agregamos//
+
+                    using (var fileStream = new FileStream(Path.Combine(upload, fileName+extension),FileMode.Create))
+                    {
+                        files[0].CopyTo(fileStream);
+                    }
+
+                    productoVM.Producto.ImageneUrl = fileName + extension;
+                    _context.Producto.Add(productoVM.Producto);
+                }
+                else // Aqui estamos diceindo que el id es distinto o igual que  cero que Actualize el producto o editar//
+                {
+                }
+                _context.SaveChanges();
+                return RedirectToAction("ProductoIndex");
+            }// este es la llame de ModelState.Isvalid//
+            return View(productoVM);
         }
     }
 }
