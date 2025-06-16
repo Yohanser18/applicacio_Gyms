@@ -106,11 +106,56 @@ namespace GYMS_TR.Controllers
                     _context.Producto.Add(productoVM.Producto);
                 }
                 else // Aqui estamos diceindo que el id es distinto o igual que  cero que Actualize el producto o editar//
-                {
+                { 
+                    //actualizar//
+                    var objProducto = _context.Producto.AsNoTracking().FirstOrDefault(p => p.Id == productoVM.Producto.Id);//aqui lo que vamos hacer es que nos busque la imagen que vamos editar por el Id//
+
+                    if (files.Count() > 0)//Aqui es que se va a cargar la imagen para crearla de nuevo//
+                    {
+                        string upload = wbRootPath + WC.ImagenRuta;//Aqui esta guardando la imagen en la ruta que creamos en la carpeta wwwroot//
+                        string fileName = Guid.NewGuid().ToString();// esta es para que le a signe un id a nuestra imagenes//
+                        string extension = Path.GetExtension(files[0].FileName);//Aqui estamos recibiendo la imagen que agregamos//
+
+                        //Aqui se va a borrar la imagen que ya esta cargada //
+                        var anteriorFile = Path.Combine(upload, objProducto.ImageneUrl);
+
+                        if (System.IO.File.Exists(anteriorFile))//Aqui estamos diciendo que si la imagen existe borramela//
+                        {
+                            System.IO.File.Delete(anteriorFile);
+                        }//fin de la imagen barrada anterior //
+
+                        using (var fileStream = new FileStream(Path.Combine(upload, fileName + extension), FileMode.Create))
+                        {
+                            files[0].CopyTo(fileStream);
+                        }
+
+                        productoVM.Producto.ImageneUrl = fileName+extension;//Ya aqui estamos cargando la imagen nueva//
+                    }//En caso contrario  no cargando una  nueva imagen//
+                    else
+                    {
+                        productoVM.Producto.ImageneUrl = objProducto.ImageneUrl;
+                    }
+                    _context.Producto.Update(productoVM.Producto);
+
                 }
                 _context.SaveChanges();
                 return RedirectToAction("ProductoIndex");
             }// este es la llame de ModelState.Isvalid//
+            // esto es por si algo falla, que se llene las listas de categoria, tipoAplicacion
+            productoVM.CategoriaLista = _context.Categorias.Select(c => new SelectListItem
+            {
+                Text = c.NombreCategoria,
+                Value = c.Id.ToString()
+            });
+
+            productoVM.TipoAplicacionLista = _context.TipoAplicacion.Select(t => new SelectListItem
+            {
+                Text = t.Nombre,
+                Value = t.Id.ToString()
+            });
+
+
+
             return View(productoVM);
         }
     }
