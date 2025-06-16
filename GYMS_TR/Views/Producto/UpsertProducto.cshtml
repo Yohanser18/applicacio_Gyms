@@ -44,7 +44,7 @@
 
                     <div class="col-md-6">
                         <label asp-for="Producto.DescripcionPruducto" class="form-label">Descripcion Producto</label>
-                        <input asp-for="Producto.DescripcionPruducto" class="form-control" />
+                        <textarea asp-for="Producto.DescripcionPruducto" class="form-control  summernote"></textarea>
                         <span asp-validation-for="Producto.DescripcionPruducto" class="text-danger"></span>
                     </div>
 
@@ -96,7 +96,14 @@
 
     <script>
 
-        function validarImagen(){
+        $(document).ready(function () { // Aqui estamos utilizando jquery para validar el textarea de la descripcion del producto//
+            $('.summernote').summernote({
+               height:200
+            });
+        });
+
+
+        function validarImagen(){ //Aqui estamos validando lo que es la alerta de agregar una imagen cn javascript//
             if(document.getElementById("imagenId").value==""){
                 swal("Error", "Seleccione una imagen!", "error");
                 return false;
