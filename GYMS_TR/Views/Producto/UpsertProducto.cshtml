@@ -40,7 +40,7 @@
                         <input asp-for="Producto.Precio" class="form-control" />
                         <span asp-validation-for="Producto.Precio" class="text-danger"></span>
                     </div>
-
+                    
 
                     <div class="col-md-6">
                         <label asp-for="Producto.DescripcionPruducto" class="form-label">Descripcion Producto</label>
@@ -67,7 +67,13 @@
                               <option disabled selected>-- Tipo un Aplicacion</option>
                         </select>
                     </div>
-
+                     <br />
+                    <div class="col-4">
+                        @if (Model.Producto.Id != 0)//esto es para que la imagen no aparesca a la ohara de crear un producto nuevo//
+                        {
+                            <img src="@WC.ImagenRuta@Model.Producto.ImageneUrl" width="50%" style="border-radius:5px; border:1px solid #bbb" />
+                        }
+                    </div>
                 </div>
                 <br />
 

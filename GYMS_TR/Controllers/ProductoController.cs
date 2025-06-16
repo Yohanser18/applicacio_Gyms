@@ -78,7 +78,7 @@ namespace GYMS_TR.Controllers
                 }
             }
 
-            return View(productoVM.Producto);//la vista tiene producto que haga la accion de editar//
+            return View(productoVM);//la vista tiene producto que haga la accion de editar//
         }
 
         [HttpPost]
