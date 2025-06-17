@@ -27,15 +27,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="CategoriaIndex">Categoria</a>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administral GYMS
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="CategoriaIndex">Categoria</a> </li>
+                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex">Tipo Aplicacion</a> </li>
+                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="ProductoIndex">Pruducto</a> </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex">Tipo Aplicacion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="ProductoIndex">Pruducto</a>
-                        </li>
+
+
+
                     </ul>
                 </div>
             </div>
