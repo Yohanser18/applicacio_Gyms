@@ -21,7 +21,7 @@ namespace GYMS_TR.Controllers
 
         public IActionResult Index() //Aqui estamos llamdo al VM homevm que es donde estamos hacediendo las entidades//
         {
-            HomeVM homeVM  = new HomeVM()
+            HomeVM homeVM  = new HomeVM() // esta es el proceso para hacer el filtrado tonto de categoria como de producto//
             {
                 Productos = _context.Producto.Include(c => c.Categoria)
                                                      .Include(t => t.TipoAplicacion),
@@ -29,6 +29,20 @@ namespace GYMS_TR.Controllers
             };
 
             return View(homeVM);
+        }
+
+        [HttpGet]
+        public IActionResult Detalle(int Id)
+        {
+            DetalleVM detalleVM = new DetalleVM() //Aqui estamos llamando a nuestro detalle VM y le estamos diciendo que le entidad producto de vuelva un unico registro por Id//
+            { 
+                Producto = _context.Producto.Include(c => c.Categoria)
+                                             .Include(t => t.TipoAplicacion)
+                                             .FirstOrDefault(p => p.Id == Id),
+                ExisteEnCarro = false
+            };
+
+            return View(detalleVM);
         }
 
         public IActionResult Privacy()
