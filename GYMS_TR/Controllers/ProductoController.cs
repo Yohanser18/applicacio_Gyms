@@ -153,9 +153,6 @@ namespace GYMS_TR.Controllers
                 Text = t.Nombre,
                 Value = t.Id.ToString()
             });
-
-
-
             return View(productoVM);
         }
     }
