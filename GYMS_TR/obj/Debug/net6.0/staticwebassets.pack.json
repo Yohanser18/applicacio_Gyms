@@ -8609,6 +8609,14 @@
       "PackagePath": "staticwebassets\\fontawesome\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Id": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\producto\\25814369-79e7-4401-94e4-d9bd597db646.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\producto\\25814369-79e7-4401-94e4-d9bd597db646.jpg"
+    },
+    {
+      "Id": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\producto\\8327197b-c1b6-4bc7-913b-b25606f04c47.jpg",
+      "PackagePath": "staticwebassets\\imagenes\\producto\\8327197b-c1b6-4bc7-913b-b25606f04c47.jpg"
+    },
+    {
       "Id": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

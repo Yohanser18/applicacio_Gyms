@@ -1,8 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model GYMS_TR.Models.ViewModels.HomeVM
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+	<div class="text-center">
+			<button class="btn btn-dark filter-button" data-filter="all">Todos</button>
+			@foreach (var cat in Model.Categorias)
+			{
+				<button class="btn btn-outline-secondary filter-button" data-filter="@cat.NombreCategoria.Replace(' ','_')">
+                  @cat.NombreCategoria
+				</button>
+			}
+	</div>
+	<br />
+
+	<div class="row">
+		@foreach (var prod in Model.Productos)
+		{
+			//Aqui vamos a desplegar todos los productos de una vista parcial//
+			<partial name="_ProductoCard"  model="prod"/>
+		}
+	</div>
+
 </div>
+
+@section Scripts {            @*Aqui este es la que se encarg de hacer los movimientos de la las card de la vista parcial*@
+
+	<script>
+			$(document).ready(function(){
+
+			$(".filter-button").click(function(){
+
+				var value = $(this).attr('data-filter');
+				if(value == "all")
+				{
+					$('.filter').show('1000');
+				}
+				else
+				{
+					$(".filter").not('.'+value).hide('3000');
+					$('.filter').filter('.'+value).show('3000');
+
+				}
+			});
+
+		});
+	</script>
+
+}

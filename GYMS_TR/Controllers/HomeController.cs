@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics;
+using GYMS_TR.Datos;
 using GYMS_TR.Models;
+using GYMS_TR.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GYMS_TR.Controllers
 {
@@ -8,14 +11,24 @@ namespace GYMS_TR.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+
+            _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() //Aqui estamos llamdo al VM homevm que es donde estamos hacediendo las entidades//
         {
-            return View();
+            HomeVM homeVM  = new HomeVM()
+            {
+                Productos = _context.Producto.Include(c => c.Categoria)
+                                                     .Include(t => t.TipoAplicacion),
+                Categorias = _context.Categorias
+            };
+
+            return View(homeVM);
         }
 
         public IActionResult Privacy()
