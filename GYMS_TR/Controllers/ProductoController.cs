@@ -155,5 +155,48 @@ namespace GYMS_TR.Controllers
             });
             return View(productoVM);
         }
+
+        [HttpGet]
+        public IActionResult EliminarProducto(int? Id)
+        {
+            if (Id == null || Id == 0)//Aqui estamos diciendo que si el Id es null o cero que devuelva no encontrado//
+            {
+                return NotFound();
+            }
+
+            Producto producto = _context.Producto.Include(c => c.Categoria)   //Aqui estamos diceindo que nos traiga ese registra por el Id seleciondo//
+                                                    .Include(t => t.TipoAplicacion)
+                                                    .FirstOrDefault(p => p.Id == Id);
+            if (producto == null) //Aqui estamos diciendo que si no encontro el registro por el Id que nos diga no encontrado//
+            {
+                return NotFound();
+            }
+
+            return View(producto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EliminarProducto(Producto producto)
+        {
+            if (producto == null) 
+            {
+                return NotFound();
+            }
+            //Aui vamos a eliminar la imagen que esta agregadar//
+            string upload =  _webHostEnvironment.WebRootPath + WC.ImagenRuta;
+            
+            //Aqui se va a borrar la imagen que ya esta cargada //
+            var anteriorFile = Path.Combine(upload, producto.ImageneUrl);
+
+            if (System.IO.File.Exists(anteriorFile))//Aqui estamos diciendo que si la imagen existe borramela//
+            {
+                System.IO.File.Delete(anteriorFile);
+            }//fin de la imagen barrada anterior //
+
+            _context.Producto.Remove(producto);
+            _context.SaveChanges();
+            return RedirectToAction("ProductoIndex");
+        }
     }
 }
