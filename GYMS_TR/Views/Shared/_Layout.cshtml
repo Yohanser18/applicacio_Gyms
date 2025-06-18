@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@*Aqui vamos autilizar algunas directivas para poder hacerde a las seciones*@
+@using Microsoft.AspNetCore.Http
+@*esto es para utilisar la siciones que ingreamos en el program y la carpeta de Utilidades*@
+@inject IHttpContextAccessor HttpContextAccesor 
+@using GYMS_TR.Utilidades
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,7 +23,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GYMS_TR</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -27,7 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Administral GYMS
@@ -40,7 +47,24 @@
                             </ul>
                         </li>
 
-
+                        @*Aqui vamos hacer el proceso de ingresar los producto que seleccine el usuario ir guardandolo en el carro de compra// *@
+                        <li>
+                            @if (HttpContextAccesor.HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras) != null)//Esto aui lo que va hacer un conteo de los producto que tiene el usuario en le carro de compra//
+                            {
+                                <a asp-action="CarroIndex" asp-controller="Carro" class="nav-link">
+                                    @{
+                                        var count = HttpContextAccesor.HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras).Count();
+                                    }
+                                    <i class="fas fa-shopping-cart"></i> &nbsp; (@count)
+                                </a>
+                            }
+                            else
+                            {
+                             <a href="#" class="nav-link">
+                                 <i class="fas fa-shopping-cart"></i> &nbsp; (0)
+                             </a>
+                            }
+                        </li>
 
                     </ul>
                 </div>
