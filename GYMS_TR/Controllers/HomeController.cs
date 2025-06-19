@@ -51,7 +51,7 @@ namespace GYMS_TR.Controllers
                 ExisteEnCarro = false
             };
 
-            foreach (var item in carroComprasLista)//Aqui le estomos diciendo que haga un recorrido por el corrito y que verifique si esta ese producto en el que lo busque por Id y removerlo de el carro//
+            foreach (var item in carroComprasLista)//Aqui le estomos diciendo que haga un recorrido por el corrito y que verifique si esta ese producto  que lo busque por Id y removerlo de el carro//
             {
                 if (item.ProductoId == Id)
                 {
@@ -75,6 +75,25 @@ namespace GYMS_TR.Controllers
             carroComprasLista.Add(new CarroCompra { ProductoId = Id });
             HttpContext.Session.Set(WC.SessionCarroCompras, carroComprasLista);
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult RemoverDeCarro (int Id)//Aqui estamos haciendo la accion de remover del carro//
+        {
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>();
+            if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null && 
+                HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0) 
+            {
+                carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
+            }
+
+            var ProductoARemover = carroComprasLista.SingleOrDefault(x  => x.ProductoId == Id); //Aqui estamos diciendo que si ese producto heciste  la lista del carro de comprsa  por el Id//
+            if (ProductoARemover != null)//Ahora dicimos que si este en la lista es diston que null que pase removerlo del carro de compras//
+            {
+                carroComprasLista.Remove(ProductoARemover);
+            }
+
+            HttpContext.Session.Set(WC.SessionCarroCompras,carroComprasLista);//Aqui estamos dicendo que esta en guaedada ese secion o producto que si existe en la secion//
             return RedirectToAction("Index");
         }
 
