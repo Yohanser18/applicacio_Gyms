@@ -4,6 +4,8 @@ using GYMS_TR.Models;
 using GYMS_TR.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using GYMS_TR.Utilidades;
 
 namespace GYMS_TR.Controllers
 {
@@ -43,6 +45,21 @@ namespace GYMS_TR.Controllers
             };
 
             return View(detalleVM);
+        }
+
+        [HttpPost, ActionName("Detalle")]
+        public IActionResult DetallePost(int Id)
+        {
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>();
+            if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null 
+                && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
+            {
+                carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
+            }
+            carroComprasLista.Add(new CarroCompra { ProductoId = Id });
+            HttpContext.Session.Set(WC.SessionCarroCompras, carroComprasLista);
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()
