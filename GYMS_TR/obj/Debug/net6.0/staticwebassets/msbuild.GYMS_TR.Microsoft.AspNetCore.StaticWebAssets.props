@@ -38754,12 +38754,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\8327197b-c1b6-4bc7-913b-b25606f04c47.jpg'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>GYMS_TR</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/GYMS_TR</BasePath>
-      <RelativePath>imagenes/producto/8327197b-c1b6-4bc7-913b-b25606f04c47.jpg</RelativePath>
+      <RelativePath>imagenes/producto/a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -38770,7 +38770,7 @@
       <Integrity>SnKJ2SztD3XbBvfjc/9OcQlRO1JW9KYIcvdWdSS1utk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\8327197b-c1b6-4bc7-913b-b25606f04c47.jpg'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))">
       <SourceType>Package</SourceType>

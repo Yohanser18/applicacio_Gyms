@@ -36,6 +36,13 @@ namespace GYMS_TR.Controllers
         [HttpGet]
         public IActionResult Detalle(int Id)
         {
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); //Aqui estamos verificando a ver si ahi producto en el carrito de compra para removerlo //
+            if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null
+                && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
+            {
+                carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
+            }
+
             DetalleVM detalleVM = new DetalleVM() //Aqui estamos llamando a nuestro detalle VM y le estamos diciendo que le entidad producto de vuelva un unico registro por Id//
             { 
                 Producto = _context.Producto.Include(c => c.Categoria)
@@ -44,13 +51,22 @@ namespace GYMS_TR.Controllers
                 ExisteEnCarro = false
             };
 
+            foreach (var item in carroComprasLista)//Aqui le estomos diciendo que haga un recorrido por el corrito y que verifique si esta ese producto en el que lo busque por Id y removerlo de el carro//
+            {
+                if (item.ProductoId == Id)
+                {
+                    detalleVM.ExisteEnCarro =  true;
+                }
+            }
+
+
             return View(detalleVM);
         }
 
         [HttpPost, ActionName("Detalle")]
         public IActionResult DetallePost(int Id)
         {
-            List<CarroCompra> carroComprasLista = new List<CarroCompra>();
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); //Aqui estamos agregando producto en el carro de compras y le estamos diciendo que lo agrege por el Id ese producto al carro de compras //
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null 
                 && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {

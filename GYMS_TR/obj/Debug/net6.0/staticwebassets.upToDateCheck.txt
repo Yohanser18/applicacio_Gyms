@@ -2150,7 +2150,7 @@ wwwroot\fontawesome\webfonts\fa-solid-900.woff2
 wwwroot\fontawesome\webfonts\fa-v4compatibility.ttf
 wwwroot\fontawesome\webfonts\fa-v4compatibility.woff2
 wwwroot\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg
-wwwroot\imagenes\producto\8327197b-c1b6-4bc7-913b-b25606f04c47.jpg
+wwwroot\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
