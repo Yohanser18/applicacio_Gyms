@@ -1,4 +1,5 @@
 using GYMS_TR.Datos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//Este es el servicio para poder conectarnos la base de datos y hacer las inyecciones corespondiente a la base de datos de sqlserver//
+// convertir las entidades de nuestros modelos en tabls de la base de datos, atra ves del DbContext//
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Aqui estaremos agregandr el servicion para poder trabajar con lo que son las intefaces de usuario con scaffoid //
+builder.Services.AddDefaultIdentity<IdentityUser>()
+                                  .AddEntityFrameworkStores<ApplicationDbContext>();
 
 //Aqui vamos a crear las sesiones para que padamos agregar al corro de compros//
 builder.Services.AddHttpContextAccessor();
@@ -32,6 +39,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+//Aqui van las auteticacion//
+app.UseAuthentication();
 
 app.UseAuthorization();
 
