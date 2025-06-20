@@ -47,6 +47,9 @@ app.UseAuthorization();
 
 app.UseSession(); // Le vamos a decir que use las seciones //
 
+//Esto es para que se puedan ver las vistas de razor pages//
+app.MapRazorPages();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
