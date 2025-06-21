@@ -13,7 +13,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
                               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Aqui estaremos agregandr el servicion para poder trabajar con lo que son las intefaces de usuario con scaffoid //
-builder.Services.AddDefaultIdentity<IdentityUser>()
+//Aqui vamos a tener que modificar lo de scaffoid para poder agregar los roles correspondiente de administrador y usuario//
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+                        .AddDefaultTokenProviders().AddDefaultUI()
                                   .AddEntityFrameworkStores<ApplicationDbContext>();
 
 //Aqui vamos a crear las sesiones para que padamos agregar al corro de compros//
@@ -44,8 +46,8 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
-app.UseSession(); // Le vamos a decir que use las seciones //
+// Le vamos a decir que use las seciones //
+app.UseSession(); 
 
 //Esto es para que se puedan ver las vistas de razor pages//
 app.MapRazorPages();

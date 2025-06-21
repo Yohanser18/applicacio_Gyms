@@ -15,5 +15,6 @@ namespace GYMS_TR.Datos
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<TipoAplicacion> TipoAplicacion {  get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<UsuarioAplicacion> UsuarioAplicacion { get; set; }
     }
 }

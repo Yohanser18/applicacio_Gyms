@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using GYMS_TR.Models;
 
 namespace GYMS_TR.Areas.Identity.Pages.Account
 {
@@ -26,6 +27,8 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserStore<IdentityUser> _userStore;
+        //Esto para asignar el rol de tipo admin, pero no a todos lo ususarios que creemos//
+        private readonly RoleManager<IdentityRole> _roleManager; 
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
@@ -35,7 +38,9 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
+            //Aqui vamos a inicializar en le constructor rolmanage//
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +48,7 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager; //aqui vamos hausar a rolmanager//
         }
 
         /// <summary>
@@ -68,7 +74,7 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
-        public class InputModel
+        public class InputModel  //Adentro del ViewModel estamos agregando el la propiedad que del modelo de usuarioAplicacion que la relaciomos con la table  AspNettUser//
         {
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -97,6 +103,11 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            public string NombreCompleto { get; set; } //Este es campo nuevo que estamos agreagando//
+
+            public string PhoneNumber { get; set; } // El telefono que ya lo trae la tabla aspnetuser//
+
         }
 
 
@@ -108,17 +119,31 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
+            if (!await _roleManager.RoleExistsAsync(WC.AdminRole)) //Aqui estamos diciendo que si los reles que vamos a ingresar existe de lo contrario que no pase a crearlo de nuevo//
+            {
+                //Pero si no exiten pasa a crearnos los rolos correspondiente de Administrador y cliente//
+                await _roleManager.CreateAsync(new IdentityRole(WC.AdminRole));
+                await _roleManager.CreateAsync(new IdentityRole(WC.ClienteRole));
+            }
+
+
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                //var user = CreateUser(); Vamos a utilizar el modelo de entidade UsuarioApliaccion y vamos a utilizar los campos que vallamos a necesitarll//
+                var user = new UsuarioAplicacion
+                {
+                   UserName = Input.Email,
+                   Email = Input.Email,
+                   NombreCompleto = Input.NombreCompleto,
+                };
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if (result.Succeeded)
+                if (result.Succeeded) //Aqui es cuando el usuario se crea corectamente//
                 {
                     _logger.LogInformation("User created a new account with password.");
 
