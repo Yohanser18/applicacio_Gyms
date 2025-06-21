@@ -26,9 +26,9 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
         //Esto para asignar el rol de tipo admin, pero no a todos lo ususarios que creemos//
-        private readonly RoleManager<IdentityRole> _roleManager; 
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUserStore<IdentityUser> _userStore; 
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
@@ -113,12 +113,6 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        }
-
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
-        {
             if (!await _roleManager.RoleExistsAsync(WC.AdminRole)) //Aqui estamos diciendo que si los reles que vamos a ingresar existe de lo contrario que no pase a crearlo de nuevo//
             {
                 //Pero si no exiten pasa a crearnos los rolos correspondiente de Administrador y cliente//
@@ -126,7 +120,12 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
                 await _roleManager.CreateAsync(new IdentityRole(WC.ClienteRole));
             }
 
+            ReturnUrl = returnUrl;
+            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        }
 
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
@@ -136,6 +135,7 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
                 {
                    UserName = Input.Email,
                    Email = Input.Email,
+                   PhoneNumber = Input.PhoneNumber,
                    NombreCompleto = Input.NombreCompleto,
                 };
 
@@ -145,6 +145,10 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
                 if (result.Succeeded) //Aqui es cuando el usuario se crea corectamente//
                 {
+                    //Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
+                    await _userManager.AddToRoleAsync(user, WC.AdminRole);
+
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
