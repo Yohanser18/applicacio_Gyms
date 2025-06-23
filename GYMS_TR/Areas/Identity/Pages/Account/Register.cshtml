@@ -1,11 +1,14 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
+
+@if (User.IsInRole(GYMS_TR.WC.AdminRole))//Aqui estamos haciendo es asignarle el tipo de permiso cuando se aministrador//
+{
+    <h1>Resgistrar un Usuario Administrador</h1>
 }
-
-<h1>@ViewData["Title"]</h1>
-
+else
+{
+    <h1>Registrar</h1>
+}
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -37,7 +40,14 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            @if (User.IsInRole(GYMS_TR.WC.AdminRole))
+            {
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning">Registrar un Usuario Administrador</button>
+            }
+            else
+            {
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            }
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

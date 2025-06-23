@@ -145,8 +145,17 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
                 if (result.Succeeded) //Aqui es cuando el usuario se crea corectamente//
                 {
-                    //Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
-                    await _userManager.AddToRoleAsync(user, WC.AdminRole);
+                    if (User.IsInRole(WC.AdminRole)) //Aqui estamos diciendo que nada prodra crear usuarios de tipo rol el que tenga ese permiso//
+                    {
+                        //Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
+                        await _userManager.AddToRoleAsync(user, WC.AdminRole);
+                    }
+                    else
+                    {
+                        //Aqui estamos diciendo en caso de que no tenga el permiso para crear un usuario de
+                        //tipo administrador que lo crea como un cliente o usuario normal//
+                        await _userManager.AddToRoleAsync(user, WC.ClienteRole);
+                    }
 
 
                     _logger.LogInformation("User created a new account with password.");
