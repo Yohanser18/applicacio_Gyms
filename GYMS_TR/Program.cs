@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//Aqui estaremos agregandr el servicion para poder trabajar con lo que son las intefaces de usuario con scaffoid //
+//Aqui estaremos agregando el servicion para poder trabajar con lo que son las intefaces de usuario con scaffoid //
 //Aqui vamos a tener que modificar lo de scaffoid para poder agregar los roles correspondiente de administrador y usuario//
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddDefaultTokenProviders().AddDefaultUI()
