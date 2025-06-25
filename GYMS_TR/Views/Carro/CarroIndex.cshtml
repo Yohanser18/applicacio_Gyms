@@ -34,22 +34,22 @@
                             </div>
 
                             <hr />
-                            @foreach (var obj in Model)
+                            @foreach (var Items in Model)
                             {
                                 <div class="row h-100">
                                     <div class="col-4 col-md-2 text-center py-2">
-                                        <img src="@WC.ImagenRuta@obj.ImageneUrl" class="rounded" width="100%" />
+                                        <img src="@WC.ImagenRuta@Items.ImageneUrl" class="rounded" width="100%" />
                                     </div>
                                     <div class="col-8 col-lg-7">
-                                        <h5>@obj.NombreProducto</h5>
-                                        <div style="font-size:11px;">@obj.DescripcionCorta</div>
+                                        <h5>@Items.NombreProducto</h5>
+                                        <div style="font-size:11px;">@Items.DescripcionCorta</div>
                                     </div>
                                     <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
-                                        <span style="font-size:17px;"> $@obj.Precio</span>/ m &sup2
+                                        <span style="font-size:17px;"> $@Items.Precio</span>/ m &sup2
 
                                     </div>
                                     <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
-                                        <a asp-action="RemoverCarro" asp-route-Id="@obj.Id" class="btn btn-outline-danger">
+                                        <a asp-action="RemoverCarro" asp-route-Id="@Items.Id" class="btn btn-outline-danger">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </div>

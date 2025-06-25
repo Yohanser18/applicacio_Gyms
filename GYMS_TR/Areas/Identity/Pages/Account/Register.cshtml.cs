@@ -147,8 +147,8 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
                 {
                     if (User.IsInRole(WC.AdminRole)) //Aqui estamos diciendo que nada prodra crear usuarios de tipo rol el que tenga ese permiso//
                     {
-                        //Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
-                        await _userManager.AddToRoleAsync(user, WC.AdminRole);
+                        
+                        await _userManager.AddToRoleAsync(user, WC.AdminRole);// Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
                     }
                     else
                     {

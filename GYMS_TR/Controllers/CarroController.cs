@@ -31,9 +31,9 @@ namespace GYMS_TR.Controllers
             {
                 carroCompraLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
-            List<int> ProdEnCarro = carroCompraLista.Select(i => i.ProductoId).ToList();//ya aqui esta nuestro carro de compra lleno //
-            IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));//Aqui esta remos mostrondo los producto que esten en el carro de compras por el Id//
-            return View(ProdLista);
+            List<int> ProdEnCarro = carroCompraLista.Select(i => i.ProductoId).ToList();// Aqui estamos obteniendo los Id de los productos que estan en el carro de compra//
+            IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));// Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
+            return View(ProdLista); //Aqui estamos retornando la vista con los productos que estan en el carro de compra//
         }
 
         [HttpPost]
