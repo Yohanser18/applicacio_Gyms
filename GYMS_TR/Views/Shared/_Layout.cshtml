@@ -37,22 +37,27 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Administral GYMS
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="CategoriaIndex">Categoria</a> </li>
-                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex">Tipo Aplicacion</a> </li>
-                                <li> <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="ProductoIndex">Pruducto</a> </li>
-                                <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Crear Nuevo Usuario</a></li>
-                            </ul>
-                        </li>
+                        @*Aqui estamos diciendo que nada mas pueden ver esta parte los que estan camroeles administrador*@
+                        @if (User.IsInRole(WC.AdminRole))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administral GYMS
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li> <a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="CategoriaIndex">Categoria</a> </li>
+                                    <li> <a class="nav-link text-dark" asp-area="" asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex">Tipo Aplicacion</a> </li>
+                                    <li> <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="ProductoIndex">Pruducto</a> </li>
+                                    <li><a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Crear Nuevo Usuario</a></li>
+                                </ul>
+                            </li>
+                        }
                         @*Aqui vamos hacer el proceso de ingresar los producto que seleccine el usuario ir guardandolo en el carro de compra// *@
                         <li>
-                            @if (HttpContextAccesor.HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras) != null)//Esto aqui lo que va hacer un conteo de los producto que tiene el usuario en le carro de compra//
+                            @*Esto aqui lo que va hacer un conteo de los producto que tiene el usuario en le carro de compra*@
+                            @if (HttpContextAccesor.HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras) != null)
                             {
+                                @*Aqui estamos validadan el corro, que es donde mostraremos cuanto prodictos tenemos agregado*@
                                 <a asp-action="CarroIndex" asp-controller="Carro" class="nav-link">
                                     @{
                                         var count = HttpContextAccesor.HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras).Count();

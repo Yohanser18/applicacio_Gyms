@@ -4,12 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>CategoriaIndex</h1>
+<h1 hidden>CategoriaIndex</h1>
 
-
+<form asp-controller="Categoria" asp-action="CategoriaIndex" class="text-center">
+    <p>
+        <label for="search" class="form-label">Buscar Categoria:</label>
+        <input type="text" name="Buscar" class="form-control w-50 d-inline-block" placeholder="Ingrese el nombre de la categoria" />
+        <button type="submit" value="Buscar" class="btn btn-dark">Buscar</button>
+    </p>
+</form>
 
 
     <div class="container p-3">
+
         <div class="row pt-4">
             <div class="col-6">
                 <h2 class="text-primary">Lista de Categoria</h2>

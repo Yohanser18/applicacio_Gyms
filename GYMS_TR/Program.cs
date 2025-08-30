@@ -1,5 +1,7 @@
 using GYMS_TR.Datos;
+using GYMS_TR.Utilidades;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddDefaultTokenProviders().AddDefaultUI()
                                   .AddEntityFrameworkStores<ApplicationDbContext>();
+//Aqui vamos a agregar el servicio de email para poder enviar correos electronicos con SendGrid//
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 //Aqui vamos a crear las sesiones para que padamos agregar al corro de compros//
 builder.Services.AddHttpContextAccessor();

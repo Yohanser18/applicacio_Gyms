@@ -1,17 +1,19 @@
 ﻿using GYMS_TR.Datos;
 using GYMS_TR.Models;
 using GYMS_TR.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace GYMS_TR.Controllers
 {
+    [Authorize(Roles = WC.AdminRole)]
     public class ProductoController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        private readonly IWebHostEnvironment _webHostEnvironment;//Esto es necesario para poder recibir ;a imagenes desde la vista hacia el controlador//
+        private readonly IWebHostEnvironment _webHostEnvironment;//Esto es necesario para poder recibir  imagenes desde la vista hacia el controlador//
 
         public ProductoController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
@@ -106,9 +108,10 @@ namespace GYMS_TR.Controllers
                     _context.Producto.Add(productoVM.Producto);
                 }
                 else // Aqui estamos diceindo que el id es distinto o igual que  cero que Actualize el producto o editar//
-                { 
+                {
                     //actualizar//
-                    var objProducto = _context.Producto.AsNoTracking().FirstOrDefault(p => p.Id == productoVM.Producto.Id);//aqui lo que vamos hacer es que nos busque la imagen que vamos editar por el Id//
+                    //Aqui estamos obteniendo el producto que ya esta en la base de datos y lo traiga por lr Id//
+                    var objProducto = _context.Producto.AsNoTracking().FirstOrDefault(p => p.Id == productoVM.Producto.Id);
 
                     if (files.Count() > 0)//Aqui es que se va a cargar la imagen para crearla de nuevo//
                     {
@@ -130,9 +133,10 @@ namespace GYMS_TR.Controllers
                         }
 
                         productoVM.Producto.ImageneUrl = fileName+extension;//Ya aqui estamos cargando la imagen nueva//
-                    }//En caso contrario  no cargando una  nueva imagen//
+                    }
                     else
                     {
+                        //Aqui estamos diciendo que si no carga una imagen que me traiga la que ya esta en la base de datos//
                         productoVM.Producto.ImageneUrl = objProducto.ImageneUrl;
                     }
                     _context.Producto.Update(productoVM.Producto);
@@ -163,11 +167,12 @@ namespace GYMS_TR.Controllers
             {
                 return NotFound();
             }
-
-            Producto producto = _context.Producto.Include(c => c.Categoria)   //Aqui estamos diceindo que nos traiga ese registra por el Id seleciondo//
+            //Aqui estamos diceindo que nos traiga ese registra por el Id seleciondo//
+            Producto producto = _context.Producto.Include(c => c.Categoria)
                                                     .Include(t => t.TipoAplicacion)
                                                     .FirstOrDefault(p => p.Id == Id);
-            if (producto == null) //Aqui estamos diciendo que si no encontro el registro por el Id que nos diga no encontrado//
+            //Aqui estamos diciendo que si no encontro el registro por el Id que nos diga no encontrado//
+            if (producto == null) 
             {
                 return NotFound();
             }

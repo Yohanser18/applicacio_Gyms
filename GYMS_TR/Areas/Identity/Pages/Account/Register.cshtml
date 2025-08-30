@@ -40,7 +40,8 @@ else
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-			@if (User.IsInRole(GYMS_TR.WC.AdminRole))// Aqui estamos haciendo es asignarle el tipo de permiso cuando se aministrador//
+            @*Aqui estamos haciendo es asignarle el tipo de permiso cuando se aministrador//*@ 
+			@if (User.IsInRole(GYMS_TR.WC.AdminRole))
 			{
                 <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning">Registrar un Usuario Administrador</button>
             }

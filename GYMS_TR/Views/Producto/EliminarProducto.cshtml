@@ -4,11 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>EliminarProducto</h1>
 
-
-
-<form method="post" asp-action="EliminarProducto" >
+<form method="post" asp-action="EliminarProducto">
     <input asp-for="Id" hidden />
 
     <div class="border p-3">
@@ -19,62 +16,68 @@
 
         <div class="row">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label asp-for="NombreProducto" class="form-label">Nombre Producto</label>
-                        <input asp-for="NombreProducto" disabled class="form-control" />
+            <div class="col-8">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="NombreProducto" class="form-label">Nombre Producto</label>
+                            <input asp-for="NombreProducto" disabled class="form-control" />
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="DescripcionCorta" class="form-label">Descripcion Corta</label>
-                        <input asp-for="DescripcionCorta" disabled class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="DescripcionCorta" class="form-label">Descripcion Corta</label>
+                            <input asp-for="DescripcionCorta" disabled class="form-control" />
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="Precio" class="form-label">Precio</label>
-                        <input asp-for="Precio"  disabled class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Precio" class="form-label">Precio</label>
+                            <input asp-for="Precio" disabled class="form-control" />
+                        </div>
                     </div>
-
-
-                    <div class="col-md-6" hidden>
-                        <label asp-for="DescripcionPruducto" class="form-label">Descripcion Producto</label>
-                        <textarea asp-for="DescripcionPruducto"  class="form-control  summernote"></textarea>
+                    <div class="row">
+                        <div class="col-md-6" hidden>
+                            <label asp-for="DescripcionPruducto" class="form-label">Descripcion Producto</label>
+                            <textarea asp-for="DescripcionPruducto" class="form-control  summernote"></textarea>
+                        </div>
                     </div>
-
-                    <div class="col-md-6" hidden>
-                        <label asp-for="ImageneUrl" class="form-label">Imagen</label>
-                        <input  asp-for="ImageneUrl" class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6" hidden>
+                            <label asp-for="ImageneUrl" class="form-label">Imagen</label>
+                            <input asp-for="ImageneUrl" class="form-control" />
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="CategoriaId" class="form-label">Categoria</label>
-                        <input asp-for="CategoriaId" hidden class="form-control" />
-                        <input asp-for="Categoria.NombreCategoria" disabled class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="CategoriaId" class="form-label">Categoria</label>
+                            <input asp-for="CategoriaId" hidden class="form-control" />
+                            <input asp-for="Categoria.NombreCategoria" disabled class="form-control" />
+                        </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <label asp-for="TipoAplicacionId" class="form-label">Tipo Aplicacion</label>
-                        <input asp-for="TipoAplicacionId" hidden class="form-control" />
-                        <input asp-for="TipoAplicacion.Nombre" disabled class="form-control" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="TipoAplicacionId" class="form-label">Tipo Aplicacion</label>
+                            <input asp-for="TipoAplicacionId" hidden class="form-control" />
+                            <input asp-for="TipoAplicacion.Nombre" disabled class="form-control" />
+                        </div>
                     </div>
                     <br />
-                    <div class="col-4">
-                        @if (Model.Id != 0)//esto es para que la imagen no aparesca a la ohara de crear un producto nuevo//
-                        {
-                            <img src="@WC.ImagenRuta@Model.ImageneUrl" width="50%" style="border-radius:5px; border:1px solid #bbb" />
-                        }
+                    <div class="d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a asp-controller="Producto" asp-action="ProductoIndex" class="btn btn-success">Regresar</a>
                     </div>
-                </div>
-                <br />
 
-                <div class="d-grid gap-2 d-md-block">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                    <a asp-controller="Producto" asp-action="ProductoIndex" class="btn btn-success">Regresar</a>
                 </div>
 
             </div>
-
+            <div class="col-4">
+                @if (Model.Id != 0)//esto es para que la imagen no aparesca a la ohara de crear un producto nuevo//
+                {
+                    <img src="@WC.ImagenRuta@Model.ImageneUrl" width="100%" style="border-radius:5px; border:1px solid #bbb" />
+                }
+            </div>
         </div>
 
     </div>

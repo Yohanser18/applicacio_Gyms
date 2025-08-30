@@ -103,17 +103,18 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-
-            public string NombreCompleto { get; set; } //Este es campo nuevo que estamos agreagando//
-
-            public string PhoneNumber { get; set; } // El telefono que ya lo trae la tabla aspnetuser//
+            //Este es campo nuevo que estamos agreagando//
+            public string NombreCompleto { get; set; }
+            // El telefono que ya lo trae la tabla aspnetuser//
+            public string PhoneNumber { get; set; } 
 
         }
 
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!await _roleManager.RoleExistsAsync(WC.AdminRole)) //Aqui estamos diciendo que si los reles que vamos a ingresar existe de lo contrario que no pase a crearlo de nuevo//
+            //Aqui estamos diciendo que si los reles que vamos a ingresar existe de lo contrario que no pase a crearlo de nuevo//
+            if (!await _roleManager.RoleExistsAsync(WC.AdminRole)) 
             {
                 //Pero si no exiten pasa a crearnos los rolos correspondiente de Administrador y cliente//
                 await _roleManager.CreateAsync(new IdentityRole(WC.AdminRole));
@@ -130,7 +131,8 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                //var user = CreateUser(); Vamos a utilizar el modelo de entidade UsuarioApliaccion y vamos a utilizar los campos que vallamos a necesitarll//
+                //var user = CreateUser(); 
+                //Vamos a utilizar el modelo de entidade UsuarioApliaccion y vamos a utilizar los campos que vallamos a necesitarll//
                 var user = new UsuarioAplicacion
                 {
                    UserName = Input.Email,
@@ -145,10 +147,12 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
                 if (result.Succeeded) //Aqui es cuando el usuario se crea corectamente//
                 {
-                    if (User.IsInRole(WC.AdminRole)) //Aqui estamos diciendo que nada prodra crear usuarios de tipo rol el que tenga ese permiso//
+                    // Aqui estamo verificando si el usuario que esta creando el nuevo usuario es un administrador//
+
+                    if (User.IsInRole(WC.AdminRole))
                     {
-                        
-                        await _userManager.AddToRoleAsync(user, WC.AdminRole);// Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
+                        // Aqui vamos hacer cuando creamos el primer usuario sea como administrador//
+                        await _userManager.AddToRoleAsync(user, WC.AdminRole);
                     }
                     else
                     {
@@ -169,8 +173,8 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await _emailSender.SendEmailAsync(Input.Email, "Comfirmar tu Email",
+                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Haga Click aqui</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -178,7 +182,19 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        /* Aqui estamos haciendo la funcionalidad para que cuando agregemos el un nuevo
+                         * administrador que soy el si no el aminsitado que agrgamos primero */
+                        if (!User.IsInRole(WC.AdminRole))
+                        {
+                            //En caso contrario que se cree el rolo de administrador //
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
+                        else
+                        {
+                            //estes espara que permanesca en en la vista Home el mismo administrador y que no se el nuevo//
+                            return RedirectToAction("Index");
+                        }
+
                         return LocalRedirect(returnUrl);
                     }
                 }

@@ -20,10 +20,11 @@ namespace GYMS_TR.Controllers
 
             _context = context;
         }
-
-        public IActionResult Index() //Aqui estamos llamdo al VM homevm que es donde estamos hacediendo las entidades//
+        //Aqui estamos llamdo al VM homevm que es donde estamos hacediendo las entidades//
+        public IActionResult Index() 
         {
-            HomeVM homeVM  = new HomeVM() // esta es el proceso para hacer el filtrado tonto de categoria como de producto//
+            // este es el proceso para hacer el filtrado tonto de categoria como de producto//
+            HomeVM homeVM  = new HomeVM() 
             {
                 Productos = _context.Producto.Include(c => c.Categoria)
                                                      .Include(t => t.TipoAplicacion),
@@ -36,22 +37,23 @@ namespace GYMS_TR.Controllers
         [HttpGet]
         public IActionResult Detalle(int Id)
         {
-            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); //Aqui estamos verificando a ver si ahi producto en el carrito de compra para removerlo //
+           //Aqui lo que estamos haciendo es dicir que en la session del carro de compra ahi o no hay producto
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); 
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null
                 && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {
                 carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
-
-            DetalleVM detalleVM = new DetalleVM() //Aqui estamos llamando a nuestro detalle VM y le estamos diciendo que le entidad producto de vuelva un unico registro por Id//
+            //Aqui estamos llamando a nuestro detalle VM y le estamos diciendo que le entidad producto de vuelva un unico registro por Id//
+            DetalleVM detalleVM = new DetalleVM() 
             { 
                 Producto = _context.Producto.Include(c => c.Categoria)
                                              .Include(t => t.TipoAplicacion)
                                              .FirstOrDefault(p => p.Id == Id),
                 ExisteEnCarro = false
             };
-
-            foreach (var item in carroComprasLista)//Aqui le estomos diciendo que haga un recorrido por el corrito y que verifique si esta ese producto  que lo busque por Id y removerlo de el carro//
+            //Aqui estamos diciendo que el producto esta en el carro de comprar, esto es para poder hacer el removido del carro//
+            foreach (var item in carroComprasLista)
             {
                 if (item.ProductoId == Id)
                 {
@@ -66,13 +68,17 @@ namespace GYMS_TR.Controllers
         [HttpPost, ActionName("Detalle")]
         public IActionResult DetallePost(int Id)
         {
-            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); //Aqui estamos agregando producto en el carro de compras y le estamos diciendo que lo agrege por el Id ese producto al carro de compras //
+            //Aqui estamos agregando producto en el carro de compras y le estamos diciendo que lo agrege por el Id ese producto al carro de compras //
+            List<CarroCompra> carroComprasLista = new List<CarroCompra>(); 
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null 
                 && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {
+                //Aqui es donde vamos mostra el corro de compro tiene producto//
                 carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
+            //Aqui es donde eestamos agregando al carro de compra productos por el Id//
             carroComprasLista.Add(new CarroCompra { ProductoId = Id });
+            //esto aqui es para que muestre los producto que tiene el corro de compra y lo que acabamos de agregar //
             HttpContext.Session.Set(WC.SessionCarroCompras, carroComprasLista);
 
             return RedirectToAction("Index");
@@ -86,14 +92,15 @@ namespace GYMS_TR.Controllers
             {
                 carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
-
-            var ProductoARemover = carroComprasLista.SingleOrDefault(x  => x.ProductoId == Id); //Aqui estamos diciendo que si ese producto heciste  la lista del carro de comprsa  por el Id//
-            if (ProductoARemover != null)//Ahora dicimos que si este en la lista es diston que null que pase removerlo del carro de compras//
+            //Aqui estamos diciendo que si ese producto heciste en  la lista del carro de comprsa  por el Id//
+            var ProductoARemover = carroComprasLista.SingleOrDefault(x  => x.ProductoId == Id);
+            //Ahora dicimos que si este en la lista es diston que null que pase removerlo del carro de compras//
+            if (ProductoARemover != null)
             {
                 carroComprasLista.Remove(ProductoARemover);
             }
-
-            HttpContext.Session.Set(WC.SessionCarroCompras,carroComprasLista);//Aqui estamos dicendo que esta en guaedada ese secion o producto que si existe en la secion//
+            //Aqui estamos dicendo que esta en guaedada ese secion o producto que si existe en la secion//
+            HttpContext.Session.Set(WC.SessionCarroCompras,carroComprasLista);
             return RedirectToAction("Index");
         }
 

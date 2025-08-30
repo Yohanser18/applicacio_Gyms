@@ -2149,6 +2149,7 @@ wwwroot\fontawesome\webfonts\fa-solid-900.ttf
 wwwroot\fontawesome\webfonts\fa-solid-900.woff2
 wwwroot\fontawesome\webfonts\fa-v4compatibility.ttf
 wwwroot\fontawesome\webfonts\fa-v4compatibility.woff2
+wwwroot\imagenes\patio.jpg
 wwwroot\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg
 wwwroot\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg
 wwwroot\js\site.js
@@ -2209,3 +2210,4 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\templetes\PlantillaOrden.html

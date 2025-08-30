@@ -75,5 +75,7 @@ namespace GYMS_TR.Areas.Identity.Pages.Account
 
             return Page();
         }
+
+
     }
 }

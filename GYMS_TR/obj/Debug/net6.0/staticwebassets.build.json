@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SLqQoD5iLBtkAttpAF7PQSntnnSAsYDdfIS/gvxDKew=",
+  "Hash": "W25hSZSL9J2j0pqKO4huiAkzC7YSa1x0J4ho+fuOq+A=",
   "Source": "GYMS_TR",
   "BasePath": "_content/GYMS_TR",
   "Mode": "Default",
@@ -46490,6 +46490,27 @@
       "OriginalItemSpec": "wwwroot\\fontawesome\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\patio.jpg",
+      "SourceId": "GYMS_TR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\",
+      "BasePath": "_content/GYMS_TR",
+      "RelativePath": "imagenes/patio#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "i0xtjy6aur",
+      "Integrity": "nhh3lhAVftvLUQz7MhIaQbkIn5Q/yhxxQ7fZBuURP1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\patio.jpg"
+    },
+    {
       "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\producto\\25814369-79e7-4401-94e4-d9bd597db646.jpg",
       "SourceId": "GYMS_TR",
       "SourceType": "Discovered",
@@ -47748,6 +47769,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\templetes\\PlantillaOrden.html",
+      "SourceId": "GYMS_TR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\",
+      "BasePath": "_content/GYMS_TR",
+      "RelativePath": "templetes/PlantillaOrden#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p27dsy5k14",
+      "Integrity": "ERkK6/VAEkl2TUEaRFIZn+zmHbX+M2jr4vglYqlynkQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\templetes\\PlantillaOrden.html"
     }
   ],
   "Endpoints": [
@@ -224156,7 +224198,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:41:11 GMT"
+          "Value": "Wed, 27 Aug 2025 21:12:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -224193,7 +224235,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:41:11 GMT"
+          "Value": "Wed, 27 Aug 2025 21:12:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -224238,7 +224280,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:41:11 GMT"
+          "Value": "Wed, 27 Aug 2025 21:12:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -224283,7 +224325,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:41:11 GMT"
+          "Value": "Wed, 27 Aug 2025 21:12:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -226514,6 +226556,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-aBc/n/nO9esvq0e80G57lEYLonvE5dKKUgoozaiVfLM="
+        }
+      ]
+    },
+    {
+      "Route": "imagenes/patio.i0xtjy6aur.jpg",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\patio.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "161447"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nhh3lhAVftvLUQz7MhIaQbkIn5Q/yhxxQ7fZBuURP1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Aug 2025 23:14:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i0xtjy6aur"
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/patio.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nhh3lhAVftvLUQz7MhIaQbkIn5Q/yhxxQ7fZBuURP1o="
+        }
+      ]
+    },
+    {
+      "Route": "imagenes/patio.jpg",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\patio.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "161447"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nhh3lhAVftvLUQz7MhIaQbkIn5Q/yhxxQ7fZBuURP1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Aug 2025 23:14:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nhh3lhAVftvLUQz7MhIaQbkIn5Q/yhxxQ7fZBuURP1o="
         }
       ]
     },
@@ -231434,6 +231558,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-aBc/n/nO9esvq0e80G57lEYLonvE5dKKUgoozaiVfLM="
+        }
+      ]
+    },
+    {
+      "Route": "templetes/PlantillaOrden.html",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\templetes\\PlantillaOrden.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4002"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ERkK6/VAEkl2TUEaRFIZn+zmHbX+M2jr4vglYqlynkQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Aug 2025 23:14:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ERkK6/VAEkl2TUEaRFIZn+zmHbX+M2jr4vglYqlynkQ="
+        }
+      ]
+    },
+    {
+      "Route": "templetes/PlantillaOrden.p27dsy5k14.html",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\templetes\\PlantillaOrden.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4002"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ERkK6/VAEkl2TUEaRFIZn+zmHbX+M2jr4vglYqlynkQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 20 Aug 2025 23:14:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p27dsy5k14"
+        },
+        {
+          "Name": "label",
+          "Value": "templetes/PlantillaOrden.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ERkK6/VAEkl2TUEaRFIZn+zmHbX+M2jr4vglYqlynkQ="
         }
       ]
     }

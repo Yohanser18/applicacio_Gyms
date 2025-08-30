@@ -1,9 +1,11 @@
 ﻿using GYMS_TR.Datos;
 using GYMS_TR.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GYMS_TR.Controllers
 {
+    [Authorize(Roles = WC.AdminRole)]
     public class TipoAplicacionController : Controller
     {
         private readonly ApplicationDbContext _context;
