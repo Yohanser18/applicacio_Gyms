@@ -6,8 +6,9 @@
         {
             Producto = new Producto();
         }
-        public  Producto Producto { get; set; } // esta es la entidad de producto //
-
-        public bool ExisteEnCarro { get; set; }// esta es nueva propiedad que va a verifiacr si ya esta en le carro//
+        // esta es la entidad de producto //
+        public Producto Producto { get; set; }
+        // esta es nueva propiedad que va a verifiacr si ya esta en le carro//
+        public bool ExisteEnCarro { get; set; }
     }
 }
