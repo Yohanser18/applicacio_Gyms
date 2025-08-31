@@ -2,7 +2,7 @@
 using GYMS_TR.Datos;
 using GYMS_TR.Models;
 using GYMS_TR.Models.ViewModels;
-using GYMS_TR.Utilidades;
+using GYMS_TR_Utilidades;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;

@@ -5,7 +5,7 @@ using GYMS_TR.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using GYMS_TR.Utilidades;
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Controllers
 {

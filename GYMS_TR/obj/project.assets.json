@@ -3871,6 +3871,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "GYMS_TR_Utilidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity.UI": "6.0.36",
+          "SendGrid": "9.29.3"
+        },
+        "compile": {
+          "bin/placeholder/GYMS_TR_Utilidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GYMS_TR_Utilidades.dll": {}
+        }
       }
     }
   },
@@ -11017,10 +11031,16 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "GYMS_TR_Utilidades/1.0.0": {
+      "type": "project",
+      "path": "../GYMS_TR_Utilidades/GYMS_TR_Utilidades.csproj",
+      "msbuildProject": "../GYMS_TR_Utilidades/GYMS_TR_Utilidades.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "GYMS_TR_Utilidades >= 1.0.0",
       "Microsoft.AspNetCore.Authorization >= 6.0.36",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.36",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.36",
@@ -11063,7 +11083,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj": {
+              "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

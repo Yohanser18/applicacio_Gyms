@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using GYMS_TR.Models;
+//Esta es la bilblioteca//
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Areas.Identity.Pages.Account
 {

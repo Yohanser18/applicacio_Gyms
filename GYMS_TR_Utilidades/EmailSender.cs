@@ -2,8 +2,9 @@
 using System.Net;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using SendGrid;
+using Microsoft.Extensions.Configuration;
 
-namespace GYMS_TR.Utilidades
+namespace GYMS_TR_Utilidades
 {
     public class EmailSender : IEmailSender
     {

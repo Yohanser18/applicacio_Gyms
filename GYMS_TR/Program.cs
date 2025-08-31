@@ -1,5 +1,5 @@
 using GYMS_TR.Datos;
-using GYMS_TR.Utilidades;
+using GYMS_TR_Utilidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

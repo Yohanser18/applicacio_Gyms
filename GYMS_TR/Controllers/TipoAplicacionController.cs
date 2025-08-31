@@ -2,6 +2,8 @@
 using GYMS_TR.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+//Esta es la biblioteca //
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Controllers
 {

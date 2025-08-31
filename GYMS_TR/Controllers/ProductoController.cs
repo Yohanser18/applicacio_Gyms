@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+//Esta es la biblioteca //
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Controllers
 {

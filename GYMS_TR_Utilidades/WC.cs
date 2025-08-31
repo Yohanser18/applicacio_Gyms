@@ -1,4 +1,4 @@
-﻿namespace GYMS_TR
+﻿namespace GYMS_TR_Utilidades
 {
     public static class WC // Aqui vamos aguadar todas la constante de nuestro proyecto //
     {

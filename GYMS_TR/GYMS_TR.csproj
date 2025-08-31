@@ -24,4 +24,8 @@
     <Folder Include="wwwroot\imagenes\producto\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GYMS_TR_Utilidades\GYMS_TR_Utilidades.csproj" />
+  </ItemGroup>
+
 </Project>

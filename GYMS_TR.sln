@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GYMS_TR", "GYMS_TR\GYMS_TR.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GYMS_TR_Utilidades", "GYMS_TR_Utilidades\GYMS_TR_Utilidades.csproj", "{7B11EFD3-F2A2-474D-8225-4A9ABB2768DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GYMS_TR_Modelos", "GYMS_TR_Modelos\GYMS_TR_Modelos.csproj", "{8F918A8A-EAB1-4CDF-AE6A-86FF1EC457B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7B11EFD3-F2A2-474D-8225-4A9ABB2768DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B11EFD3-F2A2-474D-8225-4A9ABB2768DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B11EFD3-F2A2-474D-8225-4A9ABB2768DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F918A8A-EAB1-4CDF-AE6A-86FF1EC457B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F918A8A-EAB1-4CDF-AE6A-86FF1EC457B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F918A8A-EAB1-4CDF-AE6A-86FF1EC457B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F918A8A-EAB1-4CDF-AE6A-86FF1EC457B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
