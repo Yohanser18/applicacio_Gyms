@@ -33,6 +33,12 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\GYMS_TR_AccesoDatos.csproj": {
+                "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\GYMS_TR_AccesoDatos.csproj"
+              },
+              "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj": {
+                "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj"
+              },
               "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj": {
                 "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj"
               }
@@ -113,14 +119,14 @@
         }
       }
     },
-    "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj": {
+    "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\GYMS_TR_AccesoDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj",
-        "projectName": "GYMS_TR_Utilidades",
-        "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj",
+        "projectUniqueName": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\GYMS_TR_AccesoDatos.csproj",
+        "projectName": "GYMS_TR_AccesoDatos",
+        "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\GYMS_TR_AccesoDatos.csproj",
         "packagesPath": "C:\\Users\\nask9\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\obj\\",
+        "outputPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_AccesoDatos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -141,7 +147,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj": {
+                "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -160,13 +170,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity.UI": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.36, )"
             },
-            "SendGrid": {
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[9.29.3, )"
+              "version": "[6.0.36, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
             }
           },
           "imports": [

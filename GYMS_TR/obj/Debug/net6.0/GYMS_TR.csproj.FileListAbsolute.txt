@@ -562,3 +562,7 @@ C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\obj\Debug\net6.0\refint\GYMS_TR.
 C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\obj\Debug\net6.0\GYMS_TR.pdb
 C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\obj\Debug\net6.0\GYMS_TR.genruntimeconfig.cache
 C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\obj\Debug\net6.0\ref\GYMS_TR.dll
+C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\bin\Debug\net6.0\GYMS_TR_Modelos.dll
+C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\bin\Debug\net6.0\GYMS_TR_Modelos.pdb
+C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\bin\Debug\net6.0\GYMS_TR_AccesoDatos.dll
+C:\Users\nask9\OneDrive\Desktop\GYMS_TR\GYMS_TR\bin\Debug\net6.0\GYMS_TR_AccesoDatos.pdb

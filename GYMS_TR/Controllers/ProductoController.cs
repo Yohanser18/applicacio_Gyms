@@ -1,4 +1,4 @@
-﻿using GYMS_TR.Datos;
+﻿using GYMS_TR_AccesoDatos.Datos;
 using GYMS_TR_Modelos;
 using GYMS_TR_Modelos.ViewModels;
 using Microsoft.AspNetCore.Authorization;

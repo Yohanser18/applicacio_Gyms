@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace GYMS_TR.Migrations
+namespace GYMS_TR_AccesoDatos.Migrations
 {
     public partial class ModeloUsuarioAplicacionParaAgregarAtableUserAspNet : Migration
     {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace GYMS_TR.Datos
+namespace GYMS_TR_AccesoDatos.Datos
 {
     public class ApplicationDbContext : IdentityDbContext //Es aqui que hacemos que nuestros modelos se combiertan en 
     {                                         //una tabla de la base de datos

@@ -1,5 +1,5 @@
 ﻿using AspNetCoreGeneratedDocument;
-using GYMS_TR.Datos;
+using GYMS_TR_AccesoDatos.Datos;
 //Esta es la capa de modelos//
 using GYMS_TR_Modelos;
 using GYMS_TR_Modelos.ViewModels;

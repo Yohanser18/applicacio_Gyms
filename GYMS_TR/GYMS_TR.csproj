@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GYMS_TR_AccesoDatos\GYMS_TR_AccesoDatos.csproj" />
     <ProjectReference Include="..\GYMS_TR_Modelos\GYMS_TR_Modelos.csproj" />
     <ProjectReference Include="..\GYMS_TR_Utilidades\GYMS_TR_Utilidades.csproj" />
   </ItemGroup>

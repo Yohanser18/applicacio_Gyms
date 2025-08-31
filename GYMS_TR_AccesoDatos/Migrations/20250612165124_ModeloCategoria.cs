@@ -2,30 +2,31 @@
 
 #nullable disable
 
-namespace GYMS_TR.Migrations
+namespace GYMS_TR_AccesoDatos.Migrations
 {
-    public partial class ModeloTipoAplicacion : Migration
+    public partial class ModeloCategoria : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TipoAplicacion",
+                name: "Categorias",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NombreCategoria = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MostrasOrden = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TipoAplicacion", x => x.Id);
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TipoAplicacion");
+                name: "Categorias");
         }
     }
 }

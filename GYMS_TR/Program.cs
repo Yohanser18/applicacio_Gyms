@@ -1,4 +1,4 @@
-using GYMS_TR.Datos;
+using GYMS_TR_AccesoDatos.Datos;
 using GYMS_TR_Utilidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
