@@ -1,4 +1,4 @@
-﻿namespace GYMS_TR.Models.ViewModels
+﻿namespace GYMS_TR_Modelos.ViewModels
 {
     public class ProductoUsuarioVM // Esta es la vista modelo que vamos a usar para poder mostrar los productos y el usuario que esta logueado en la aplicacion y en el boton continuar//
     {

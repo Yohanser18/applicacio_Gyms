@@ -1,8 +1,9 @@
 ﻿using AspNetCoreGeneratedDocument;
 using GYMS_TR.Datos;
-using GYMS_TR.Models;
-using GYMS_TR.Models.ViewModels;
-using GYMS_TR.Utilidades;
+//Esta es la capa de modelos//
+using GYMS_TR_Modelos;
+using GYMS_TR_Modelos.ViewModels;
+using GYMS_TR_Utilidades;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;

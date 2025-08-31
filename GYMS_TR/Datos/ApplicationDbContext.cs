@@ -1,4 +1,4 @@
-﻿using GYMS_TR.Models;
+﻿using GYMS_TR_Modelos;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,4 @@
-﻿namespace GYMS_TR.Models.ViewModels
+﻿namespace GYMS_TR_Modelos.ViewModels
 {
     public class HomeVM //Aqui en este VM estaremos ulizando la entidades de categoria y producto//
     {

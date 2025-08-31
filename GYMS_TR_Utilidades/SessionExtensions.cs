@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
-namespace GYMS_TR.Utilidades
+namespace GYMS_TR_Utilidades
 {
     public static class SessionExtensions // Esto que cuando le demos al voton de agregar al carrito//
     {

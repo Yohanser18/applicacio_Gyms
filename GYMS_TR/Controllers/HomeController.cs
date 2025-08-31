@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
 using GYMS_TR.Datos;
-using GYMS_TR.Models;
-using GYMS_TR.Models.ViewModels;
+using GYMS_TR_Modelos;
+using GYMS_TR_Modelos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
-using GYMS_TR.Utilidades;
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Controllers
 {

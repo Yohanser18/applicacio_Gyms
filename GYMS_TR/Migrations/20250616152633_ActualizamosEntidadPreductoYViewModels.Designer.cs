@@ -23,7 +23,7 @@ namespace GYMS_TR.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("GYMS_TR.Models.Categoria", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace GYMS_TR.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("GYMS_TR.Models.Producto", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.Producto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace GYMS_TR.Migrations
                     b.ToTable("Producto");
                 });
 
-            modelBuilder.Entity("GYMS_TR.Models.TipoAplicacion", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.TipoAplicacion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -101,15 +101,15 @@ namespace GYMS_TR.Migrations
                     b.ToTable("TipoAplicacion");
                 });
 
-            modelBuilder.Entity("GYMS_TR.Models.Producto", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.Producto", b =>
                 {
-                    b.HasOne("GYMS_TR.Models.Categoria", "Categoria")
+                    b.HasOne("GYMS_TR_Modelos.Categoria", "Categoria")
                         .WithMany()
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GYMS_TR.Models.TipoAplicacion", "TipoAplicacion")
+                    b.HasOne("GYMS_TR_Modelos.TipoAplicacion", "TipoAplicacion")
                         .WithMany()
                         .HasForeignKey("TipoAplicacionId")
                         .OnDelete(DeleteBehavior.Cascade)

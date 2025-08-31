@@ -1,7 +1,9 @@
 ﻿using GYMS_TR.Datos;
-using GYMS_TR.Models;
+using GYMS_TR_Modelos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+//Esta es la biblioteca //
+using GYMS_TR_Utilidades;
 
 namespace GYMS_TR.Controllers
 {

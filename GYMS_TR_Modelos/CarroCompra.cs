@@ -1,4 +1,4 @@
-﻿namespace GYMS_TR.Models
+﻿namespace GYMS_TR_Modelos
 {
     public class CarroCompra  // Aqui vamos a detallar cuanto de cuanto producto va a ir teniendo el usuario en carro de compra//
     {

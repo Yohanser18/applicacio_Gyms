@@ -1,4 +1,4 @@
-﻿namespace GYMS_TR.Models.ViewModels
+﻿namespace GYMS_TR_Modelos.ViewModels
 {
     public class DetalleVM // Aqui es que vamos autilizar la entidad de producto y vamos a crear una propiedad nueva para ver si lla existe en el carro de compra
     {

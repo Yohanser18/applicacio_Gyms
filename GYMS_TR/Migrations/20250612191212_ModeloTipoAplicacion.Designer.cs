@@ -23,7 +23,7 @@ namespace GYMS_TR.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("GYMS_TR.Models.Categoria", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace GYMS_TR.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("GYMS_TR.Models.TipoAplicacion", b =>
+            modelBuilder.Entity("GYMS_TR_Modelos.TipoAplicacion", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
