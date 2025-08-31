@@ -34,7 +34,6 @@
     ".NETCoreApp,Version=v6.0": {
       "GYMS_TR/1.0.0": {
         "dependencies": {
-          "GYMS_TR_Modelos": "1.0.0",
           "GYMS_TR_Utilidades": "1.0.0",
           "Microsoft.AspNetCore.Authorization": "6.0.36",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.36",
@@ -3503,17 +3502,22 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "GYMS_TR_Modelos/1.0.0": {
+      "GYMS_TR_Utilidades/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.3.0",
-          "Microsoft.Extensions.Identity.Stores": "6.0.36"
+          "Microsoft.AspNetCore.Identity.UI": "6.0.36",
+          "SendGrid": "9.29.3"
         },
         "runtime": {
-          "GYMS_TR_Modelos.dll": {
+          "GYMS_TR_Utilidades.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
         },
+        "compile": {
+          "GYMS_TR_Utilidades.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Antiforgery/6.0.0.0": {
         "compile": {
           "GYMS_TR_Modelos.dll": {}
         }
@@ -6993,17 +6997,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "GYMS_TR_Modelos/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "GYMS_TR_Utilidades/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Antiforgery.Reference/6.0.0.0": {
+    "Microsoft.AspNetCore.Antiforgery/6.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

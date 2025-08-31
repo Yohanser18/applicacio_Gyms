@@ -4500,20 +4500,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "GYMS_TR_Modelos/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.3.0",
-          "Microsoft.Extensions.Identity.Stores": "6.0.36"
-        },
-        "compile": {
-          "bin/placeholder/GYMS_TR_Modelos.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GYMS_TR_Modelos.dll": {}
-        }
-      },
       "GYMS_TR_Utilidades/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -12349,11 +12335,6 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "GYMS_TR_Modelos/1.0.0": {
-      "type": "project",
-      "path": "../GYMS_TR_Modelos/GYMS_TR_Modelos.csproj",
-      "msbuildProject": "../GYMS_TR_Modelos/GYMS_TR_Modelos.csproj"
-    },
     "GYMS_TR_Utilidades/1.0.0": {
       "type": "project",
       "path": "../GYMS_TR_Utilidades/GYMS_TR_Utilidades.csproj",
@@ -12362,7 +12343,6 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "GYMS_TR_Modelos >= 1.0.0",
       "GYMS_TR_Utilidades >= 1.0.0",
       "Microsoft.AspNetCore.Authorization >= 6.0.36",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.36",
@@ -12407,9 +12387,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj": {
-              "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Modelos\\GYMS_TR_Modelos.csproj"
-            },
             "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj": {
               "projectPath": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR_Utilidades\\GYMS_TR_Utilidades.csproj"
             }
