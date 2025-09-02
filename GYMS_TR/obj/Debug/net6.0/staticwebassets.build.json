@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "T3r6IftbRDOd75Cz06STdlq+wHo0VJz6q3hBIXeQ2ds=",
+  "Hash": "Uw8CXEV/vjwHzoKEsB6zOB6s8k/OOM1RP0ZbKNBURQA=",
   "Source": "GYMS_TR",
   "BasePath": "_content/GYMS_TR",
   "Mode": "Default",
@@ -1333,8 +1333,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "oq8r4nbcb2",
-      "Integrity": "AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=",
+      "Fingerprint": "73nich1w60",
+      "Integrity": "nTq9HCnhgeKZywVZ3yS8Ri0dEGd+p0nPvJx7MZYSrRs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -46490,6 +46490,27 @@
       "OriginalItemSpec": "wwwroot\\fontawesome\\webfonts\\fa-v4compatibility.woff2"
     },
     {
+      "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\dust_scratches.png",
+      "SourceId": "GYMS_TR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\",
+      "BasePath": "_content/GYMS_TR",
+      "RelativePath": "imagenes/dust_scratches#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "faxg14r5yr",
+      "Integrity": "hy0cYyokEc10QwpSXlOPQ0j+DoMH/7kBAoKoKpV9Siw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\dust_scratches.png"
+    },
+    {
       "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\patio.jpg",
       "SourceId": "GYMS_TR",
       "SourceType": "Discovered",
@@ -46551,6 +46572,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\producto\\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\tile.png",
+      "SourceId": "GYMS_TR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\",
+      "BasePath": "_content/GYMS_TR",
+      "RelativePath": "imagenes/tile#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "b43d23u9ui",
+      "Integrity": "C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagenes\\tile.png"
     },
     {
       "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\site.js",
@@ -47794,6 +47836,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/site.73nich1w60.css",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4212"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nTq9HCnhgeKZywVZ3yS8Ri0dEGd+p0nPvJx7MZYSrRs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Sep 2025 01:17:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "73nich1w60"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nTq9HCnhgeKZywVZ3yS8Ri0dEGd+p0nPvJx7MZYSrRs="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -47804,7 +47891,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "194"
+          "Value": "4212"
         },
         {
           "Name": "Content-Type",
@@ -47812,11 +47899,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=\""
+          "Value": "\"nTq9HCnhgeKZywVZ3yS8Ri0dEGd+p0nPvJx7MZYSrRs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:35:53 GMT"
+          "Value": "Tue, 02 Sep 2025 01:17:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -47826,52 +47913,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.oq8r4nbcb2.css",
-      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "194"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 12 Jun 2025 15:35:53 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "oq8r4nbcb2"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL+c="
+          "Value": "sha256-nTq9HCnhgeKZywVZ3yS8Ri0dEGd+p0nPvJx7MZYSrRs="
         }
       ]
     },
@@ -226560,6 +226602,88 @@
       ]
     },
     {
+      "Route": "imagenes/dust_scratches.faxg14r5yr.png",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\dust_scratches.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23257"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hy0cYyokEc10QwpSXlOPQ0j+DoMH/7kBAoKoKpV9Siw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Sep 2025 00:34:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "faxg14r5yr"
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/dust_scratches.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hy0cYyokEc10QwpSXlOPQ0j+DoMH/7kBAoKoKpV9Siw="
+        }
+      ]
+    },
+    {
+      "Route": "imagenes/dust_scratches.png",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\dust_scratches.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23257"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hy0cYyokEc10QwpSXlOPQ0j+DoMH/7kBAoKoKpV9Siw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Sep 2025 00:34:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hy0cYyokEc10QwpSXlOPQ0j+DoMH/7kBAoKoKpV9Siw="
+        }
+      ]
+    },
+    {
       "Route": "imagenes/patio.i0xtjy6aur.jpg",
       "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\patio.jpg",
       "Selectors": [],
@@ -226802,6 +226926,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-SnKJ2SztD3XbBvfjc/9OcQlRO1JW9KYIcvdWdSS1utk="
+        }
+      ]
+    },
+    {
+      "Route": "imagenes/tile.b43d23u9ui.png",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\tile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Sep 2025 00:34:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "b43d23u9ui"
+        },
+        {
+          "Name": "label",
+          "Value": "imagenes/tile.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g="
+        }
+      ]
+    },
+    {
+      "Route": "imagenes/tile.png",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\imagenes\\tile.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "684"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 02 Sep 2025 00:34:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g="
         }
       ]
     },
