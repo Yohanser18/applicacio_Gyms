@@ -1,4 +1,6 @@
 using GYMS_TR_AccesoDatos.Datos;
+using GYMS_TR_AccesoDatos.Datos.Repositorio;
+using GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio;
 using GYMS_TR_Utilidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -30,7 +32,10 @@ builder.Services.AddSession(Options =>
     Options.Cookie.HttpOnly = true;
     Options.Cookie.IsEssential = true;
 });
-
+// Aqui vamos agregar el servicio de los repositorios//
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositario>();
+builder.Services.AddScoped<ITipoAplicacionRepositorio, TipoAplicacionRepositorio>();
+builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

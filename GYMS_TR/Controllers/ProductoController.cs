@@ -7,32 +7,35 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 //Esta es la biblioteca //
 using GYMS_TR_Utilidades;
+using GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio;
 
 namespace GYMS_TR.Controllers
 {
     [Authorize(Roles = WC.AdminRole)]
     public class ProductoController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        // Inyectamos el contexto de la base de datos del repositorio//
+        private readonly IProductoRepositorio _Icontext;
 
         private readonly IWebHostEnvironment _webHostEnvironment;//Esto es necesario para poder recibir  imagenes desde la vista hacia el controlador//
-
-        public ProductoController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        // Constructor del controlador de Producto
+        public ProductoController(IProductoRepositorio context, IWebHostEnvironment webHostEnvironment)
         {
-            _context = context;
+            _Icontext = context;
             _webHostEnvironment = webHostEnvironment;
         }
 
+        // Metodo para mostrar todos los productos//
         public IActionResult ProductoIndex()
         {
-            IEnumerable<Producto> lista = _context.Producto.Include(c => c.Categoria).
-                                                             Include(t => t.TipoAplicacion);
+            IEnumerable<Producto> lista = _Icontext.ObtenerTodos(incluirPropiedades: "Categoria,TipoAplicacion");
             return View(lista);
         }
 
         [HttpGet]
         public IActionResult UpsertProducto(int? Id) 
         {
+            #region Aqui estamos utilizando lo que es ViewBag//
             /*Con es es una lista de la tabla caterio que le vamos enviar a la vista producto con el selectListItems.select
              esto quiere decir que va a enviar tanto texto como valor a la vista //
             IEnumerable<SelectListItem> categoriaLista = _context.Categorias.Select(c => new SelectListItem
@@ -43,6 +46,7 @@ namespace GYMS_TR.Controllers
             ViewBag.categoriaLista = categoriaLista;
 
             Producto producto = new Producto();*/
+            #endregion
 
             /*Aqui estamos inicializando nuestro ViewModle de producto y 
              estamos llamando todo lo que esta a dentro de ViewModel productop*/
@@ -51,7 +55,8 @@ namespace GYMS_TR.Controllers
             {
                 Producto = new Producto(),// Aqui estamos inicializando todo lo que tiene que lo que tiene a dentro//
 
-                CategoriaLista = _context.Categorias.Select(c =>  new SelectListItem
+                #region //Aqui comentamos todo lo que viene del VM producto que es lo que agregamos los select
+                /*CategoriaLista = _context.Categorias.Select(c =>  new SelectListItem
                 {
                     Text = c.NombreCategoria,
                     Value = c.Id.ToString()
@@ -61,7 +66,11 @@ namespace GYMS_TR.Controllers
                 {
                     Text = t.Nombre,
                     Value = t.Id.ToString()
-                })
+                })*/
+                #endregion
+                //Aqui estamos llamando el metodo que creamos en el repositorio para obtener todas las relaciones de producto//
+                CategoriaLista = _Icontext.ObtenerTodaRelacioneList(WC.CategoriaNombre),
+                TipoAplicacionLista = _Icontext.ObtenerTodaRelacioneList(WC.TipoAplicacionNombre)
 
             };
 
@@ -74,7 +83,7 @@ namespace GYMS_TR.Controllers
             {
                 //Aqui esatmos diciendo qued si llamos el Id desde el bonto editar eso
                 //quiere dicer que ahi producto en la lista.
-                productoVM.Producto = _context.Producto.Find(Id);
+                productoVM.Producto = _Icontext.Obtener(Id.GetValueOrDefault());
 
                 if (productoVM.Producto == null)// estamos que si no encontro ese registro o culumna de producta nos de una excepcion//
                 {
@@ -107,13 +116,13 @@ namespace GYMS_TR.Controllers
                     }
 
                     productoVM.Producto.ImageneUrl = fileName + extension;
-                    _context.Producto.Add(productoVM.Producto);
+                    _Icontext.Agregar(productoVM.Producto);
                 }
                 else // Aqui estamos diceindo que el id es distinto o igual que  cero que Actualize el producto o editar//
                 {
                     //actualizar//
                     //Aqui estamos obteniendo el producto que ya esta en la base de datos y lo traiga por lr Id//
-                    var objProducto = _context.Producto.AsNoTracking().FirstOrDefault(p => p.Id == productoVM.Producto.Id);
+                    var objProducto = _Icontext.ObtenerPrimero(p => p.Id == productoVM.Producto.Id, isTracking: false);
 
                     if (files.Count() > 0)//Aqui es que se va a cargar la imagen para crearla de nuevo//
                     {
@@ -141,24 +150,29 @@ namespace GYMS_TR.Controllers
                         //Aqui estamos diciendo que si no carga una imagen que me traiga la que ya esta en la base de datos//
                         productoVM.Producto.ImageneUrl = objProducto.ImageneUrl;
                     }
-                    _context.Producto.Update(productoVM.Producto);
+                    _Icontext.Actualizar(productoVM.Producto);
 
                 }
-                _context.SaveChanges();
+                _Icontext.Grabar();
                 return RedirectToAction("ProductoIndex");
             }// este es la llame de ModelState.Isvalid//
-            // esto es por si algo falla, que se llene las listas de categoria, tipoAplicacion
-            productoVM.CategoriaLista = _context.Categorias.Select(c => new SelectListItem
-            {
-                Text = c.NombreCategoria,
-                Value = c.Id.ToString()
-            });
+             // esto es por si algo falla, que se llene las listas de categoria, tipoAplicacion
+            #region //Aqui estamos comentando todo lo que viene del VM producto que es lo que agregamos los select
+            /* productoVM.CategoriaLista = _context.Categorias.Select(c => new SelectListItem
+             {
+                 Text = c.NombreCategoria,
+                 Value = c.Id.ToString()
+             });
 
-            productoVM.TipoAplicacionLista = _context.TipoAplicacion.Select(t => new SelectListItem
-            {
-                Text = t.Nombre,
-                Value = t.Id.ToString()
-            });
+             productoVM.TipoAplicacionLista = _context.TipoAplicacion.Select(t => new SelectListItem
+             {
+                 Text = t.Nombre,
+                 Value = t.Id.ToString()
+             });*/
+            #endregion
+            // Aqui estamos llamando el metodo de la interfaces de ProductoRepositorio//
+            productoVM.CategoriaLista = _Icontext.ObtenerTodaRelacioneList(WC.CategoriaNombre);
+            productoVM.TipoAplicacionLista = _Icontext.ObtenerTodaRelacioneList(WC.TipoAplicacionNombre);
             return View(productoVM);
         }
 
@@ -170,9 +184,12 @@ namespace GYMS_TR.Controllers
                 return NotFound();
             }
             //Aqui estamos diceindo que nos traiga ese registra por el Id seleciondo//
-            Producto producto = _context.Producto.Include(c => c.Categoria)
+            #region // Aqui estamos comentando todas las relaciones que tiene producto//
+            /*Producto producto = _context.Producto.Include(c => c.Categoria)
                                                     .Include(t => t.TipoAplicacion)
-                                                    .FirstOrDefault(p => p.Id == Id);
+                                                    .FirstOrDefault(p => p.Id == Id);*/
+            #endregion
+            Producto producto = _Icontext.ObtenerPrimero(p => p.Id == Id, incluirPropiedades: "Categoria,TipoAplicacion");
             //Aqui estamos diciendo que si no encontro el registro por el Id que nos diga no encontrado//
             if (producto == null) 
             {
@@ -201,8 +218,8 @@ namespace GYMS_TR.Controllers
                 System.IO.File.Delete(anteriorFile);
             }//fin de la imagen barrada anterior //
 
-            _context.Producto.Remove(producto);
-            _context.SaveChanges();
+            _Icontext.Remover(producto);
+            _Icontext.Grabar();
             return RedirectToAction("ProductoIndex");
         }
     }

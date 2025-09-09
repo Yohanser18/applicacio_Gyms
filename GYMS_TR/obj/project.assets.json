@@ -4505,6 +4505,7 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "GYMS_TR_Modelos": "1.0.0",
+          "GYMS_TR_Utilidades": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.36",
           "Microsoft.EntityFrameworkCore.Relational": "6.0.36",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.36"

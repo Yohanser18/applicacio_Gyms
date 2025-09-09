@@ -4,25 +4,28 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 //Esta es la biblioteca //
 using GYMS_TR_Utilidades;
+using GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio;
 namespace GYMS_TR.Controllers
 {
     [Authorize(Roles = WC.AdminRole)]
     public class CategoriaController : Controller
     {
-        private readonly ApplicationDbContext _context; //el Dbcontext es el que se va a en cargar de traerme la tabla //
+        private readonly ICategoriaRepositorio _Icontext; // Aqui vamos atraer la entidades de base de datos por el repositorio//
 
-        public CategoriaController(ApplicationDbContext context) // que estomo dicendo que que ven con la base detos //
+        public CategoriaController(ICategoriaRepositorio Icontext) // Aqui vamos a crear el constructor//
         {
-            _context = context;
+            _Icontext = Icontext;
         }
 
         public IActionResult CategoriaIndex()
         {
-            IEnumerable<Categoria> lista = _context.Categorias;
+            // Aqui vamos a llamar el metodo de obtener todos el IRepocitorio generico//
+            IEnumerable<Categoria> lista = _Icontext.ObtenerTodos();
             return View(lista);
         }
 
         [HttpGet]
+        // Este es para crear la categoria//
         public IActionResult Crearcategoria() 
         { 
             return View();
@@ -34,8 +37,9 @@ namespace GYMS_TR.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Categorias.Add(categoria);
-                _context.SaveChanges();
+                // Aqui vamos a llamar el metodo de agregar el IRepocitorio generico//
+                _Icontext.Agregar(categoria);
+                _Icontext.Grabar();
                 return RedirectToAction("CategoriaIndex");
             }
             return View(categoria);
@@ -48,8 +52,8 @@ namespace GYMS_TR.Controllers
             {
                 return NotFound();
             }
-
-            var cg = _context.Categorias.Find(Id);
+            // Aqui vamos a llamar el metodo de obtener el IRepocitorio generico//
+            var cg = _Icontext.Obtener(Id.GetValueOrDefault());
 
             if (cg ==null )
             {
@@ -64,8 +68,9 @@ namespace GYMS_TR.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(categoria);
-                _context.SaveChanges();
+                // Aqui vamos a llamar el metodo de actualizar el IRepocitorio generico//
+                _Icontext.Actualizar(categoria);
+                _Icontext.Grabar();
                 return RedirectToAction("CategoriaIndex");
             }
             return View(categoria);
@@ -78,8 +83,8 @@ namespace GYMS_TR.Controllers
             {
                 return NotFound(); 
             }
-
-            var cg = _context.Categorias.Find(Id);
+            // Aqui vamos a llamar el metodo de obtener el IRepocitorio generico//
+            var cg = _Icontext.Obtener(Id.GetValueOrDefault());
 
             if (cg == null)
             {
@@ -93,12 +98,14 @@ namespace GYMS_TR.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EliminarCategoria(Categoria categoria)
         {
-            if (categoria == null)
+            // Validamos que no venga nulo//
+            if (categoria == null) 
             {
                 return NotFound();
             }
-            _context.Remove(categoria);
-            _context.SaveChanges();
+            // Aqui vamos a llamar el metodo de eliminar el IRepocitorio generico//
+            _Icontext.Remover(categoria);
+            _Icontext.Grabar();
             return RedirectToAction("CategoriaIndex");
         }
 
