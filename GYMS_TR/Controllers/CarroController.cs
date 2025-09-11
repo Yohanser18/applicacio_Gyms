@@ -1,5 +1,7 @@
 ﻿using AspNetCoreGeneratedDocument;
 using GYMS_TR_AccesoDatos.Datos;
+using GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio;
+
 //Esta es la capa de modelos//
 using GYMS_TR_Modelos;
 using GYMS_TR_Modelos.ViewModels;
@@ -15,8 +17,12 @@ namespace GYMS_TR.Controllers
     [Authorize] //Aqui estamos diciendo que para poder entrar a este controlador se necesita estar logueado//
     public class CarroController : Controller
     {
-        // Aqui estamos creando una variable de tipo ApplicationDbContext para poder acceder a la base de datos y poder hacer las consultas que necesitemos.//
-        private readonly ApplicationDbContext _context;
+        // Aqui estamos creando una variable de tipo ApplicationDbContext para poder acceder a la base de datos.//
+        private readonly IProductoRepositorio _IcontextProd;
+        private readonly IUsuarioAplicacionRepositorio _IcontextUser;
+        private readonly IOrdenRepositorio _Icontextord;
+        private readonly IOrdenDetalleRepositorio _Icontextorddet;
+
         // Aqui estamos creando una variable de tipo IWebHostEnvironment para poder acceder a la carpeta wwwroot donde esta le carpeta de templetes que donde vamos accedr para utilizar el template del correo.//
         private readonly IWebHostEnvironment _webHostEnvironment;
         // Aqui estamos creando una variable de tipo IEmailSender para poder enviar correos electronicos.//
@@ -25,11 +31,14 @@ namespace GYMS_TR.Controllers
         [BindProperty] 
         public ProductoUsuarioVM productoUsuarioVM { get; set; }
         // Aqui estamos inyectando el ApplicationDbContext en el controlador CarroController para poder acceder a la base de datos.//
-        public CarroController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender)
+        public CarroController(IProductoRepositorio contextprod,IUsuarioAplicacionRepositorio contextuser, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender, IOrdenRepositorio icontextord, IOrdenDetalleRepositorio icontextorddet)
         {
-            _context = context;
+            _IcontextProd = contextprod;
+            _IcontextUser = contextuser;
             _webHostEnvironment = webHostEnvironment;
             _emailSender = emailSender;
+            _Icontextord = icontextord;
+            _Icontextorddet = icontextorddet;
         }
 
         public IActionResult CarroIndex()
@@ -45,7 +54,10 @@ namespace GYMS_TR.Controllers
             // Aqui estamos obteniendo los Id de los productos que estan en el carro de compra//
             List<int> ProdEnCarro = carroCompraLista.Select(i => i.ProductoId).ToList();
             // Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
-            IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));
+            #region // este es proceso logico que utilizamas la primera vez
+            /*IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));*/
+            #endregion
+            IEnumerable<Producto> ProdLista = _IcontextProd.ObtenerTodos(p => ProdEnCarro.Contains(p.Id));
             //Aqui estamos retornando la vista con los productos que estan en el carro de compra//
             return View(ProdLista); 
         }
@@ -61,21 +73,33 @@ namespace GYMS_TR.Controllers
         public IActionResult Resumen()
         {
             //Aqui vamos a traer el usuario que esta logueado en la aplicacion o conectado//
-            var ClaimsIdentity = (ClaimsIdentity)User.Identity; //Aqui estamos obteniendo la identidad del usuario que esta logueado en la aplicacion o conectado//
-            var Cliam =  ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier); //Aqui estamos obteniendo el Id del usuario que esta logueado en la aplicacion o conectado//
-            
-            List<CarroCompra> carrocompraLista = new List<CarroCompra>();//Aqui le estamos diciendo a la lista que se llene con todos los productos//
+            //Aqui estamos obteniendo la identidad del usuario que esta logueado en la aplicacion o conectado//
+            var ClaimsIdentity = (ClaimsIdentity)User.Identity;
+            //Aqui estamos obteniendo el Id del usuario que esta logueado en la aplicacion o conectado//
+            var Cliam =  ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            //Aqui le estamos diciendo a la lista que se llene con todos los productos//
+            List<CarroCompra> carrocompraLista = new List<CarroCompra>();
+            //Aqui estamos diciendo que si la session esta llena que pase a entrar al carrito de compra//
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null && 
-                HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0) //Aqui estamos diciendo que si la session esta llena que pase a entrar al carrito de compra//
+                HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0) 
             {
-                carrocompraLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras); //Aqui le estamos diciendo que se llene la lista con los productos que estan en el carro de compra//
+                //Aqui le estamos diciendo que se llene la lista con los productos que estan en el carro de compra//
+                carrocompraLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras); 
             }
-            List<int> ProdEnCarro = carrocompraLista.Select(i => i.ProductoId).ToList(); //Aqui estamos obteniendo los Id de los productos que estan en el carro de compra//
-            IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id)); //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
-
+            //Aqui estamos obteniendo los Id de los productos que estan en el carro de compra//
+            List<int> ProdEnCarro = carrocompraLista.Select(i => i.ProductoId).ToList();
+            //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
+            #region //esta es proceso logico que utilizamas la primera vez
+            /*IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));*/
+            #endregion
+            IEnumerable<Producto> ProdLista = _IcontextProd.ObtenerTodos(p => ProdEnCarro.Contains(p.Id));
             productoUsuarioVM = new ProductoUsuarioVM()
             {
-                UsuarioAplicacion = _context.UsuarioAplicacion.FirstOrDefault(u => u.Id == Cliam.Value), //Aqui estamos obteniendo el usuario que esta logueado en la aplicacion o conectado//
+                //Aqui estamos obteniendo el usuario que esta logueado en la aplicacion o conectado//
+                #region //esta es proceso logico que utilizamas la primera vez
+                /*UsuarioAplicacion = _context.UsuarioAplicacion.FirstOrDefault(u => u.Id == Cliam.Value),*/
+                #endregion
+                UsuarioAplicacion = _IcontextUser.ObtenerPrimero(u => u.Id == Cliam.Value),
                 ProductoLista = ProdLista.ToList() //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
             };
             return View(productoUsuarioVM); //Aqui estamos retornando la vista con el modelo ProductoUsuarioVM que contiene el usuario y los productos que estan en el carro de compra//

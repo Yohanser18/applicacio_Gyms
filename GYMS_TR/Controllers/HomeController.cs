@@ -6,19 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using GYMS_TR_Utilidades;
+using GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio;
 
 namespace GYMS_TR.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        private readonly ApplicationDbContext _context;
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        //Aqui estamos inyectando el contexto de la base de datos desde el la interfaces//
+        private readonly IProductoRepositorio _Icontextprod;
+        private readonly ICategoriaRepositorio _IcontextCat;
+        // Aqui estamos llamando al contexto de la base de datos//
+        public HomeController(ILogger<HomeController> logger, IProductoRepositorio contextprod, ICategoriaRepositorio contextcat)
         {
             _logger = logger;
-
-            _context = context;
+            _Icontextprod = contextprod;
+            _IcontextCat = contextcat;
         }
         //Aqui estamos llamdo al VM homevm que es donde estamos hacediendo las entidades//
         public IActionResult Index() 
@@ -26,9 +29,14 @@ namespace GYMS_TR.Controllers
             // este es el proceso para hacer el filtrado tonto de categoria como de producto//
             HomeVM homeVM  = new HomeVM() 
             {
-                Productos = _context.Producto.Include(c => c.Categoria)
+                #region // este es proceso logico que utilizamas la primera vez
+                /*Productos = _context.Producto.Include(c => c.Categoria)
                                                      .Include(t => t.TipoAplicacion),
-                Categorias = _context.Categorias
+                Categorias = _context.Categorias*/
+                #endregion
+                // Aqui estamos llamando a nuestro repositorio generico que es el que tiene la herncia del Interfaces repositorio//
+                Productos = _Icontextprod.ObtenerTodos(incluirPropiedades: "Categoria,TipoAplicacion"),
+                Categorias = _IcontextCat.ObtenerTodos()
             };
 
             return View(homeVM);
@@ -46,10 +54,15 @@ namespace GYMS_TR.Controllers
             }
             //Aqui estamos llamando a nuestro detalle VM y le estamos diciendo que le entidad producto de vuelva un unico registro por Id//
             DetalleVM detalleVM = new DetalleVM() 
-            { 
-                Producto = _context.Producto.Include(c => c.Categoria)
+            {
+                #region // este es proceso logico que utilizamas la primera vez
+                /*Producto = _context.Producto.Include(c => c.Categoria)
                                              .Include(t => t.TipoAplicacion)
-                                             .FirstOrDefault(p => p.Id == Id),
+                                             .FirstOrDefault(p => p.Id == Id),*/
+                #endregion
+
+                Producto = _Icontextprod.ObtenerPrimero(p => p.Id == Id, incluirPropiedades: "Categoria,TipoAplicacion"),
+
                 ExisteEnCarro = false
             };
             //Aqui estamos diciendo que el producto esta en el carro de comprar, esto es para poder hacer el removido del carro//

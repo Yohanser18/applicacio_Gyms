@@ -36,6 +36,9 @@ builder.Services.AddSession(Options =>
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositario>();
 builder.Services.AddScoped<ITipoAplicacionRepositorio, TipoAplicacionRepositorio>();
 builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+builder.Services.AddScoped<IUsuarioAplicacionRepositorio, UsuarioAplicacionRepositorio>();
+builder.Services.AddScoped<IOrdenRepositorio, OrdenRepositorio>();
+builder.Services.AddScoped<IOrdenDetalleRepositorio, OrdenDetalleRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
