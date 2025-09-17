@@ -2154,6 +2154,7 @@ wwwroot\imagenes\patio.jpg
 wwwroot\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg
 wwwroot\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg
 wwwroot\imagenes\tile.png
+wwwroot\js\Orden.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

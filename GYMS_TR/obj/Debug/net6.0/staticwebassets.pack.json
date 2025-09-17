@@ -8629,6 +8629,10 @@
       "PackagePath": "staticwebassets\\imagenes\\tile.png"
     },
     {
+      "Id": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\Orden.js",
+      "PackagePath": "staticwebassets\\js\\Orden.js"
+    },
+    {
       "Id": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

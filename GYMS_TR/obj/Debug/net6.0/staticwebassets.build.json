@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q+sIR9GsaWXGQ0FLuIVdxQ/B81nLKs6gOaioueMGY30=",
+  "Hash": "JH4Y80tAqR+o7Fpj0mp+BRte5t0FKdNolgQ9xLuBk7w=",
   "Source": "GYMS_TR",
   "BasePath": "_content/GYMS_TR",
   "Mode": "Default",
@@ -46593,6 +46593,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagenes\\tile.png"
+    },
+    {
+      "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\Orden.js",
+      "SourceId": "GYMS_TR",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\",
+      "BasePath": "_content/GYMS_TR",
+      "RelativePath": "js/Orden#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ezrqrecc8j",
+      "Integrity": "1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Orden.js"
     },
     {
       "Identity": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\site.js",
@@ -227008,6 +227029,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK+g="
+        }
+      ]
+    },
+    {
+      "Route": "js/Orden.ezrqrecc8j.js",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\Orden.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1741"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 17 Sep 2025 01:49:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ezrqrecc8j"
+        },
+        {
+          "Name": "label",
+          "Value": "js/Orden.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk="
+        }
+      ]
+    },
+    {
+      "Route": "js/Orden.js",
+      "AssetFile": "C:\\Users\\nask9\\OneDrive\\Desktop\\GYMS_TR\\GYMS_TR\\wwwroot\\js\\Orden.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1741"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 17 Sep 2025 01:49:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk="
         }
       ]
     },

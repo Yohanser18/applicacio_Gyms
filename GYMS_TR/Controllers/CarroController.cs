@@ -110,6 +110,10 @@ namespace GYMS_TR.Controllers
         [ActionName("Resumen")]
         public async Task <IActionResult> ResumenPost(ProductoUsuarioVM productoUsuarioVM) //Aqui estamos recibiendo el modelo ProductoUsuarioVM que contiene el usuario y los productos que estan en el carro de compra//
         {
+            //Aqui vamos a capturar el usuario que esta logueado en la aplicacion o conectado//
+            var ClaimsIdentity = (ClaimsIdentity)User.Identity;
+            var Cliam = ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
             //Aqui vamos acceder a la capeta de wwwroot donde esta le carpeta de templetes que donde vamos accedr para utilizar el templetes//
             var rutaTemplete = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
                 + "templetes" + Path.DirectorySeparatorChar.ToString() + "PlantillaOrden.html";
@@ -140,6 +144,29 @@ namespace GYMS_TR.Controllers
 
             // Aqui estamos enviando el correo al Aministrado que esta logueado en la aplicacion o conectado//
             await _emailSender.SendEmailAsync(WC.EmailAdmin, subject, messageBody);
+            //Aqui vamos a Grabar la orden y detalle en la DB//
+            Orden orden = new Orden() 
+            {
+                UsuarioapliacacioId = Cliam.Value,
+                NombreCompleto = productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
+                Email = productoUsuarioVM.UsuarioAplicacion.Email,
+                Telefono = productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
+                FechaOrden = DateTime.Now
+            };
+            _Icontextord.Agregar(orden);
+            _Icontextord.Grabar();
+            //Aqui va ordenDetalle//
+            foreach (var prod in productoUsuarioVM.ProductoLista)
+            {
+                OrdenDetalle ordenDetalle = new OrdenDetalle()
+                {
+                    OrdenId = orden.Id,
+                    ProductoId = prod.Id,
+                };
+                _Icontextorddet.Agregar(ordenDetalle);
+            }
+            _Icontextorddet.Grabar();
+
 
             // Aqui estamos redirigiendo a la vista Confirmacion despues de enviar el correo al usuario que esta logueado en la aplicacion o conectado//
             return RedirectToAction(nameof(Confirmacion)); 

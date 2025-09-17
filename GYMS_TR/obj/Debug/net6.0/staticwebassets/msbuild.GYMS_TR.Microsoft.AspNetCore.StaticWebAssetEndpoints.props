@@ -25884,6 +25884,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK\u002Bg="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"684"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022C5/WeGsYAzpiTcBBucjcjQGETTFXwkI3uqSFLtUgK\u002Bg=\u0022"},{"Name":"Last-Modified","Value":"Tue, 02 Sep 2025 00:34:47 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GYMS_TR/js/Orden.ezrqrecc8j.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Orden.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ezrqrecc8j"},{"Name":"integrity","Value":"sha256-1jxQzpVCN2Xos6Km\u002Be/udXQrlEPK0Rdng58m\u002B4Puduk="},{"Name":"label","Value":"_content/GYMS_TR/js/Orden.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1741"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00221jxQzpVCN2Xos6Km\u002Be/udXQrlEPK0Rdng58m\u002B4Puduk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 17 Sep 2025 01:49:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GYMS_TR/js/Orden.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Orden.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1jxQzpVCN2Xos6Km\u002Be/udXQrlEPK0Rdng58m\u002B4Puduk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1741"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00221jxQzpVCN2Xos6Km\u002Be/udXQrlEPK0Rdng58m\u002B4Puduk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 17 Sep 2025 01:49:22 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GYMS_TR/js/site.6b9nfc4n3r.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                   <img src="~/imagenes/tile.png" width="40px" />  GYMS_TR
+                   <img src="~/imagenes/tile.png" width="40px" /> 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +56,16 @@
                                     <li> <a class="dropdown-item" asp-area="" asp-controller="TipoAplicacion" asp-action="TipoAplicacionIndex">Tipo Aplicacion</a> </li>
                                     <li> <a class="dropdown-item" asp-area="" asp-controller="Producto" asp-action="ProductoIndex">Pruducto</a> </li>
                                     <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Crear Nuevo Usuario</a></li>
+                                </ul>
+                            </li>
+                            @*Aqui vamos agregar todo lo que tiene que ver con las ordenes*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administral Ordenes
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li> <a class="dropdown-item " asp-area="" asp-controller="Orden" asp-action="OrdenIndex">Orden</a> </li>
+                                    
                                 </ul>
                             </li>
                         }
