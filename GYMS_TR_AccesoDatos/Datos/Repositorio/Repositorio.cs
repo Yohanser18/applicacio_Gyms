@@ -110,5 +110,11 @@ namespace GYMS_TR_AccesoDatos.Datos.Repositorio
         {
             dbSet.Remove(entidad);
         }
+
+        // Este es para remover un rango//
+        public void RemoverRango(IEnumerable<T> entidad)
+        {
+            dbSet.RemoveRange(entidad);
+        }
     }
 }

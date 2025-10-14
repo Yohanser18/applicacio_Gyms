@@ -9,7 +9,7 @@ namespace GYMS_TR_Modelos.ViewModels
     // Aquí puedes agregar propiedades específicas para la vista de órdenes//
     public class OrdenVM
     {
-        public Orden Orden  { get; set; }
+        public Orden  Orden  { get; set; }
 
         public IEnumerable<OrdenDetalle> OrdenDetalle { get; set; }
     }

@@ -154,6 +154,7 @@ namespace GYMS_TR.Controllers
 
                 }
                 _Icontext.Grabar();
+                TempData[WC.Exitosa] = "Producto creado exitosamente";
                 return RedirectToAction("ProductoIndex");
             }// este es la llame de ModelState.Isvalid//
              // esto es por si algo falla, que se llene las listas de categoria, tipoAplicacion
@@ -220,6 +221,7 @@ namespace GYMS_TR.Controllers
 
             _Icontext.Remover(producto);
             _Icontext.Grabar();
+            TempData[WC.Exitosa] = "Producto eliminado exitosamente";
             return RedirectToAction("ProductoIndex");
         }
     }

@@ -2152,7 +2152,11 @@ wwwroot\fontawesome\webfonts\fa-v4compatibility.woff2
 wwwroot\imagenes\dust_scratches.png
 wwwroot\imagenes\patio.jpg
 wwwroot\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg
+wwwroot\imagenes\producto\4d6c2642-a7fe-4cb4-962a-8ec314d95eb5.jpg
+wwwroot\imagenes\producto\50f2d27c-181d-4027-9c6f-de0e5d0dea44.jpg
+wwwroot\imagenes\producto\977278cb-9511-401f-8492-55b2bd400c8e.jpg
 wwwroot\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg
+wwwroot\imagenes\producto\e9d32a95-fe8d-47da-82ae-92b0679c7e9c.jpg
 wwwroot\imagenes\tile.png
 wwwroot\js\Orden.js
 wwwroot\js\site.js

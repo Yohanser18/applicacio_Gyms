@@ -8,7 +8,7 @@ $(document).ready(function () {
 function loadDatatable() {
     datatabla = $("#tbData").DataTable({
         // Aqui vamos a cambiar el idiama //
-        "lenguage": {
+        "language": {
             "lengthMenu": "Mostrar _MENU_ registros por pagina",
             "zeroRecords": "Nigun registros",
             "info": "Mostrando pagina _PAGE_ de _PAGES_",
@@ -16,6 +16,8 @@ function loadDatatable() {
             "infoFiltered": "(filtrado from _MAX_ registros totales)",
             "search": "Buscar",
             "paginate": {
+                "first": "Primero", 
+                "last": "Ultimo", 
                 "next": "Siguiente",
                 "previous": "Anterior"
             }

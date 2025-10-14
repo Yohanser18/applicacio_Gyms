@@ -38790,6 +38790,60 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\25814369-79e7-4401-94e4-d9bd597db646.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\4d6c2642-a7fe-4cb4-962a-8ec314d95eb5.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GYMS_TR</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GYMS_TR</BasePath>
+      <RelativePath>imagenes/producto/4d6c2642-a7fe-4cb4-962a-8ec314d95eb5.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>p7ko8hf9ls</Fingerprint>
+      <Integrity>VZh6A2SPjKdwAbdMfBiHNjjyWnYGNeqRMmLukdv668s=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\4d6c2642-a7fe-4cb4-962a-8ec314d95eb5.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\50f2d27c-181d-4027-9c6f-de0e5d0dea44.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GYMS_TR</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GYMS_TR</BasePath>
+      <RelativePath>imagenes/producto/50f2d27c-181d-4027-9c6f-de0e5d0dea44.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>sm7up8eg3i</Fingerprint>
+      <Integrity>JDvNUNdsk/B+4yCtRXLHdR+o35r+Yd8UKcCPZTFWEXQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\50f2d27c-181d-4027-9c6f-de0e5d0dea44.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\977278cb-9511-401f-8492-55b2bd400c8e.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GYMS_TR</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GYMS_TR</BasePath>
+      <RelativePath>imagenes/producto/977278cb-9511-401f-8492-55b2bd400c8e.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>y34lxrchcs</Fingerprint>
+      <Integrity>8urQPvRxEvTPTfrerdwpFi/7EWnVfJSxnBrahNLdeHQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\977278cb-9511-401f-8492-55b2bd400c8e.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>GYMS_TR</SourceId>
@@ -38807,6 +38861,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\a993ca51-080b-4ee4-84dd-60d279b76a6b.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\e9d32a95-fe8d-47da-82ae-92b0679c7e9c.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GYMS_TR</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GYMS_TR</BasePath>
+      <RelativePath>imagenes/producto/e9d32a95-fe8d-47da-82ae-92b0679c7e9c.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>j6loc3azuq</Fingerprint>
+      <Integrity>O1lkykVYFJYKxBBx5e2CkYEsYY6A5dKXh9BFzhAoo4Y=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\producto\e9d32a95-fe8d-47da-82ae-92b0679c7e9c.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagenes\tile.png'))">
       <SourceType>Package</SourceType>
@@ -38838,8 +38910,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>ezrqrecc8j</Fingerprint>
-      <Integrity>1jxQzpVCN2Xos6Km+e/udXQrlEPK0Rdng58m+4Puduk=</Integrity>
+      <Fingerprint>x7km8jkt1i</Fingerprint>
+      <Integrity>3cM6F2Yk7Ro4FTyP2vkFTcAXERCtFQ3s+DPD7sPdpVM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Orden.js'))</OriginalItemSpec>

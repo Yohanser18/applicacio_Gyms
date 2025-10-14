@@ -31,6 +31,8 @@ namespace GYMS_TR_AccesoDatos.Datos.Repositorio.IRepositorio
         void Agregar(T entidad);
         //Este es el que se encarga de eliminar un registro de la base de datos//
         void Remover(T entidad);
+        // Este es el que se encarga de eliminar un rango de registros de la base de datos//
+        void RemoverRango(IEnumerable<T> entidad);
         //Este es el que se encarga de grabar los cambios en la base de datos//
         void Grabar();
     }

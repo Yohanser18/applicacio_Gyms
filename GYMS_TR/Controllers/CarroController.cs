@@ -190,7 +190,7 @@ namespace GYMS_TR.Controllers
             //Aqui le estomos diciendo que remueva ese producto por el Id del carro de compras//
             carroCompraLista.Remove(carroCompraLista.FirstOrDefault(p => p.ProductoId == Id));
             HttpContext.Session.Set(WC.SessionCarroCompras, carroCompraLista );
-
+            TempData[WC.Exitosa] = "Producto removido exitosamente del carro de compras";
             return RedirectToAction("CarroIndex");
 
         }

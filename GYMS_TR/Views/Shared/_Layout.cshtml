@@ -97,6 +97,8 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+			@*Aqui vamos a llamar la vista parcial de las notificaciones*@
+			<partial name="_Notificaciones" />
             @RenderBody()
         </main>
     </div>
@@ -112,7 +114,6 @@
     @*Estos son los Scripts de externos todo lo que tiene que tiene que ver con los funcionalidades de js*@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)

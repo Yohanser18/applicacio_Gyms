@@ -31,7 +31,25 @@
 
                                         <p class="text-secondary">@Html.Raw(Model.Producto.DescripcionPruducto)</p>
                                     </div>
-
+                                    @*Esto nada mas va poder ingresar el valor uno que sea tipo administrador*@
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
+                                        <div class="col-12"> 
+                                            Mtr Cuadrado:
+                                        </div>
+                                        <div class="col-12"> 
+                                            @*Aqui vamos hacer una validacion que si existe en el carro que no se pueda agregar valor*@
+                                            @if (Model.ExisteEnCarro)
+                                            {
+                                                <input asp-for="@Model.Producto.TempMetrocuadrado" disabled  class="form-control"/>
+                                            }
+                                            else 
+                                            {
+												<input asp-for="@Model.Producto.TempMetrocuadrado" class="form-control" />
+                                            }
+											<span asp-validation-for="@Model.Producto.TempMetrocuadrado" class="text-danger"></span>
+                                        </div>
+                                      }
                                 </div>
                             </div>
                         </div>

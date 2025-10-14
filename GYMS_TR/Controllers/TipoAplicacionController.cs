@@ -44,9 +44,10 @@ namespace GYMS_TR.Controllers
                 // Aqui vamos a agregar el nuevo tipo de aplicacion  des la interfaces de repostorio//
                 _Icontext.Agregar(tipoAplicacion);
                 _Icontext.Grabar();
-
+                TempData[WC.Exitosa] = "Tipo de Aplicacion creado exitosamente";
                 return RedirectToAction("TipoAplicacionIndex");
             }
+            TempData[WC.Error] = "Error al crear el Tipo de Aplicacion";
             return View(tipoAplicacion);
             
         }
@@ -78,9 +79,10 @@ namespace GYMS_TR.Controllers
                 // Aqui vamos a actualizar el tipo de aplicacion  des la interfaces de repostorio//
                 _Icontext.Actualizar(tipoAplicacion);
                 _Icontext.Grabar();
+                TempData[WC.Exitosa] = "Tipo de Aplicacion editado exitosamente";
                 return RedirectToAction("TipoAplicacionIndex");
             }
-
+            TempData[WC.Error] = "Error al editar el Tipo de Aplicacion";
             return View(tipoAplicacion);
         }
 
@@ -113,6 +115,7 @@ namespace GYMS_TR.Controllers
             // Aqui vamos a eliminar el tipo de aplicacion  des la interfaces de repostorio//
             _Icontext.Remover(tipoAplicacion);
             _Icontext.Grabar();
+            TempData[WC.Exitosa] = "Tipo de Aplicacion eliminado exitosamente";
             return RedirectToAction("TipoAplicacionIndex");
         }
 

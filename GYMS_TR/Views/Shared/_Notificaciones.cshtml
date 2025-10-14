@@ -1,0 +1,23 @@
+﻿@using GYMS_TR_Utilidades
+
+@*Esto es si el proceso es Exitoso*@
+@if (TempData[WC.Exitosa] != null)
+{
+	@*Aqui vamos a insertar una libreria que es  la que se va a en cargar manerjar las  notificaciones *@
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script type="text/javascript">
+
+		toastr.success('@TempData[WC.Exitosa]');
+	</script>
+}
+@*Esto es si el proceso es Error*@
+@if (TempData[WC.Error] != null)
+{
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script type="text/javascript">
+
+		toastr.error('@TempData[WC.Error]');
+	</script>
+}

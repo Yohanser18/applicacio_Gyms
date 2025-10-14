@@ -40,8 +40,10 @@ namespace GYMS_TR.Controllers
                 // Aqui vamos a llamar el metodo de agregar el IRepocitorio generico//
                 _Icontext.Agregar(categoria);
                 _Icontext.Grabar();
+                TempData[WC.Exitosa] = "Categoria creada exitosamente";
                 return RedirectToAction("CategoriaIndex");
             }
+            TempData[WC.Error] = "Error al crear la categoria";
             return View(categoria);
         }
 
@@ -71,8 +73,10 @@ namespace GYMS_TR.Controllers
                 // Aqui vamos a llamar el metodo de actualizar el IRepocitorio generico//
                 _Icontext.Actualizar(categoria);
                 _Icontext.Grabar();
+                TempData[WC.Exitosa] = "Categoria actualizada exitosamente";
                 return RedirectToAction("CategoriaIndex");
             }
+            TempData[WC.Error] = "Error al actualizar la categoria";
             return View(categoria);
         }
 
@@ -106,6 +110,7 @@ namespace GYMS_TR.Controllers
             // Aqui vamos a llamar el metodo de eliminar el IRepocitorio generico//
             _Icontext.Remover(categoria);
             _Icontext.Grabar();
+            TempData[WC.Exitosa] = "Categoria eliminada exitosamente";
             return RedirectToAction("CategoriaIndex");
         }
 
