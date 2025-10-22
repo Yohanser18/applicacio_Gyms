@@ -79,21 +79,22 @@ namespace GYMS_TR.Controllers
         }
 
         [HttpPost, ActionName("Detalle")]
-        public IActionResult DetallePost(int Id)
+        public IActionResult DetallePost(int Id, DetalleVM detalleVM)
         {
             //Aqui estamos agregando producto en el carro de compras y le estamos diciendo que lo agrege por el Id ese producto al carro de compras //
             List<CarroCompra> carroComprasLista = new List<CarroCompra>(); 
             if (HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras) != null 
                 && HttpContext.Session.Get<IEnumerable<CarroCompra>>(WC.SessionCarroCompras).Count() > 0)
             {
-                //Aqui es donde vamos mostra el corro de compro tiene producto//
+                //Aqui es donde vamos mostra el corro de compro tiene producto y tambien le pasamos los metrocuadrado//
                 carroComprasLista = HttpContext.Session.Get<List<CarroCompra>>(WC.SessionCarroCompras);
             }
-            //Aqui es donde eestamos agregando al carro de compra productos por el Id//
-            carroComprasLista.Add(new CarroCompra { ProductoId = Id });
+            //Aqui es donde estamos agregando al carro de compra productos por el Id//
+            carroComprasLista.Add(new CarroCompra { ProductoId = Id, MetroCuadrado = detalleVM.Producto.TempMetrocuadrado });
             //esto aqui es para que muestre los producto que tiene el corro de compra y lo que acabamos de agregar //
             HttpContext.Session.Set(WC.SessionCarroCompras, carroComprasLista);
-
+            //Esta es la notificacion cuando sea exitasa//
+            TempData[WC.Exitosa] = "el agregado fue exitoso";
             return RedirectToAction("Index");
         }
 

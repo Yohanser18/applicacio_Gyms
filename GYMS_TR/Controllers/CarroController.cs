@@ -31,7 +31,13 @@ namespace GYMS_TR.Controllers
         [BindProperty] 
         public ProductoUsuarioVM productoUsuarioVM { get; set; }
         // Aqui estamos inyectando el ApplicationDbContext en el controlador CarroController para poder acceder a la base de datos.//
-        public CarroController(IProductoRepositorio contextprod,IUsuarioAplicacionRepositorio contextuser, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender, IOrdenRepositorio icontextord, IOrdenDetalleRepositorio icontextorddet)
+        public CarroController(IProductoRepositorio contextprod,
+            IUsuarioAplicacionRepositorio contextuser, 
+            IWebHostEnvironment webHostEnvironment, 
+            IEmailSender emailSender, 
+            IOrdenRepositorio icontextord, 
+            IOrdenDetalleRepositorio icontextorddet
+         )
         {
             _IcontextProd = contextprod;
             _IcontextUser = contextuser;
@@ -58,6 +64,17 @@ namespace GYMS_TR.Controllers
             /*IEnumerable<Producto> ProdLista = _context.Producto.Where(p => ProdEnCarro.Contains(p.Id));*/
             #endregion
             IEnumerable<Producto> ProdLista = _IcontextProd.ObtenerTodos(p => ProdEnCarro.Contains(p.Id));
+            // Aqui estamos pasando todos los productos en una lista//
+            List<Producto> prodListFinal = new List<Producto>();
+            //Aqui esteremos recorriendo todos los productos que tenemos en el carro de compra//
+            foreach (var carroObj in carroCompraLista)
+            {
+                // Aqui estamos buscando el producto que esta en el carro de compra por el Id//
+                Producto productoTemp = ProdLista.FirstOrDefault(p => p.Id == carroObj.ProductoId);
+                productoTemp.TempMetrocuadrado = carroObj.MetroCuadrado; //Aqui estamos pasando los metrocuadrado que el usuario selecciono en el carro de compra//
+                prodListFinal.Add(productoTemp); //Aqui estamos agregando el producto a la lista final//
+                TempData[WC.Exitosa] = "Exitosamente el agregar al carro";
+            }
             //Aqui estamos retornando la vista con los productos que estan en el carro de compra//
             return View(ProdLista); 
         }
@@ -65,18 +82,62 @@ namespace GYMS_TR.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken] //Aqui estamos diciendo que vamos a validar el token de seguridad para evitar ataques CSRF//
         [ActionName("CarroIndex")]//Aqui estamos diciendo que vamos a usar el metodo CarroIndex para poder agregar los productos al carro de compra//
-        public IActionResult IndexCarroPost()
+        public IActionResult IndexCarroPost(IEnumerable<Producto> productosLista)
         {
+            //Aqui le estamos diciendo a la lista que se llene con todos los productos//
+            List<CarroCompra> carroCompraLista = new List<CarroCompra>();
+            foreach (Producto prod in productosLista)
+            {
+                carroCompraLista.Add(new CarroCompra
+                {
+                    ProductoId = prod.Id,
+                    MetroCuadrado = prod.TempMetrocuadrado
+                });
+            }
+            // Aqui estamos actualizando la session con los nuevos valores del carro de compra//
+            HttpContext.Session.Set(WC.SessionCarroCompras, carroCompraLista);
             return RedirectToAction("Resumen");
         }
 
         public IActionResult Resumen()
         {
+            //Aqui vamos a identificar el tipo de usuario que este realizando la compra//
+            UsuarioAplicacion usuarioAplicacion;
+
+            if (User.IsInRole(WC.AdminRole))
+            {
+                // si el usuario es administrador//
+                // si el carro de compra este ligado a una orden de compra esto quiere dicir que es una orden//
+                if (HttpContext.Session.Get<int>(WC.SessionOrdenId) != 0)
+                {
+                    // Aqui vamos a traer la orden que esta en la session//
+                    Orden orden = _Icontextord.ObtenerPrimero(o => o.Id == HttpContext.Session.Get<int>(WC.SessionOrdenId));
+                    //Aqui vamos a traer el usuario que realizo la orden//
+                    usuarioAplicacion = new UsuarioAplicacion()
+                    {
+                        NombreCompleto = orden.NombreCompleto,
+                        Email = orden.Email,
+                        PhoneNumber = orden.Telefono
+                    };
+                }
+                else // si no pertenece a una orden//
+                {
+                    // Aqui lo dejamos vacio//
+                    usuarioAplicacion = new UsuarioAplicacion();
+                }
+            }
+            else // si no es un usuario administrador//
+            {
+                //Aqui estamos obteniendo la identidad del usuario que esta logueado en la aplicacion o conectado//
+                var ClaimsIdentity = (ClaimsIdentity)User.Identity;
+                //Aqui estamos obteniendo el Id del usuario que esta logueado en la aplicacion o conectado//
+                var Cliam = ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                //Aqui estamos obteniendo el usuario que esta logueado en la aplicacion o conectado//
+                usuarioAplicacion = _IcontextUser.ObtenerPrimero(u => u.Id == Cliam.Value);
+            }
+
+
             //Aqui vamos a traer el usuario que esta logueado en la aplicacion o conectado//
-            //Aqui estamos obteniendo la identidad del usuario que esta logueado en la aplicacion o conectado//
-            var ClaimsIdentity = (ClaimsIdentity)User.Identity;
-            //Aqui estamos obteniendo el Id del usuario que esta logueado en la aplicacion o conectado//
-            var Cliam =  ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             //Aqui le estamos diciendo a la lista que se llene con todos los productos//
             List<CarroCompra> carrocompraLista = new List<CarroCompra>();
             //Aqui estamos diciendo que si la session esta llena que pase a entrar al carrito de compra//
@@ -99,7 +160,7 @@ namespace GYMS_TR.Controllers
                 #region //esta es proceso logico que utilizamas la primera vez
                 /*UsuarioAplicacion = _context.UsuarioAplicacion.FirstOrDefault(u => u.Id == Cliam.Value),*/
                 #endregion
-                UsuarioAplicacion = _IcontextUser.ObtenerPrimero(u => u.Id == Cliam.Value),
+                UsuarioAplicacion = usuarioAplicacion,// Aqui estamos obteniendo el usuario que esta logueado en la aplicacion o conectado//
                 ProductoLista = ProdLista.ToList() //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
             };
             return View(productoUsuarioVM); //Aqui estamos retornando la vista con el modelo ProductoUsuarioVM que contiene el usuario y los productos que estan en el carro de compra//
@@ -171,13 +232,34 @@ namespace GYMS_TR.Controllers
             // Aqui estamos redirigiendo a la vista Confirmacion despues de enviar el correo al usuario que esta logueado en la aplicacion o conectado//
             return RedirectToAction(nameof(Confirmacion)); 
         }
-
+        // Este metodo es para limpiar la session despues de hacer el envio//
         public IActionResult Confirmacion()
         {
             //Aqui vamos a limpiar la session cuando agomaos el envio//
             HttpContext.Session.Clear();
             return View();
         }
+        // Este es el metodo para actualizar el corro de compra //
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ActualizarCarro(IEnumerable<Producto> productosLista)
+        {
+            //Aqui le estamos diciendo a la lista que se llene con todos los productos//
+            List<CarroCompra> carroCompraLista = new List<CarroCompra>();
+            foreach (Producto prod in productosLista)
+            {
+                carroCompraLista.Add(new CarroCompra
+                {
+                    ProductoId = prod.Id,
+                    MetroCuadrado = prod.TempMetrocuadrado
+                });
+            }
+            // Aqui estamos actualizando la session con los nuevos valores del carro de compra//
+            HttpContext.Session.Set(WC.SessionCarroCompras, carroCompraLista);
+            TempData[WC.Exitosa] = "Carro de compras actualizado exitosamente";
+            return RedirectToAction("CarroIndex");
+        }
+        //Este metodo es para remover un producto del carro de compra//
         public IActionResult RemoverCarro(int Id) 
         {
             List<CarroCompra> carroCompraLista = new List<CarroCompra>();//Aqui le estamos diciendo a la lista que se llene con todos los productos//
