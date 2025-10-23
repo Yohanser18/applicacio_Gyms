@@ -161,8 +161,17 @@ namespace GYMS_TR.Controllers
                 /*UsuarioAplicacion = _context.UsuarioAplicacion.FirstOrDefault(u => u.Id == Cliam.Value),*/
                 #endregion
                 UsuarioAplicacion = usuarioAplicacion,// Aqui estamos obteniendo el usuario que esta logueado en la aplicacion o conectado//
-                ProductoLista = ProdLista.ToList() //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
+                //ProductoLista = ProdLista.ToList() //Aqui estamos obteniendo los productos que estan en el carro de compra por el Id//
             };
+            //Aqui vamos llenar la lista de producto en el metodo de resumen//
+            foreach (var carro in carrocompraLista)
+            {
+                // aqui es donde llamamos el el producto por el id que este en el carro de comprar//
+                Producto prodTem = _IcontextProd.ObtenerPrimero(p => p.Id == carro.ProductoId);
+                prodTem.TempMetrocuadrado = carro.MetroCuadrado;
+                productoUsuarioVM.ProductoLista.Add(prodTem);
+
+            }
             return View(productoUsuarioVM); //Aqui estamos retornando la vista con el modelo ProductoUsuarioVM que contiene el usuario y los productos que estan en el carro de compra//
         }
 

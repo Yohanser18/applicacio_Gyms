@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace GYMS_TR_Modelos
 {
@@ -6,5 +7,10 @@ namespace GYMS_TR_Modelos
     public class UsuarioAplicacion : IdentityUser 
     {
         public string NombreCompleto { get; set; }
+        //Aqui vamos agregar nuevas propiededes//
+        [NotMapped]
+        public string  Direccion { get; set; }
+        [NotMapped]
+        public string Ciudad { get; set; }
     }
 }
