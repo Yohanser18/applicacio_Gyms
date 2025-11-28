@@ -84,8 +84,10 @@
                                         @for (int i = 0; i < Model.ProductoLista.Count(); i++)
                                         {
                                             <li class="list-group-item d-flex justify-content-between">
-                                                <input type="hidden" asp-form ="@Model.ProductoLista[i].Id" />
-                                                <input type="hidden" asp-form="@Model.ProductoLista[i].NombreProducto" />
+                                                <input type="hidden" asp-for ="@Model.ProductoLista[i].Id" />
+                                                <input type="hidden" asp-for="@Model.ProductoLista[i].NombreProducto" />
+                                                <input type="hidden" asp-for="@Model.ProductoLista[i].Precio" />
+                                                <input type="hidden" asp-for="@Model.ProductoLista[i].TempMetrocuadrado" />
                                                 <div>
                                                     <h6 class="my-0">@Model.ProductoLista[i].NombreProducto</h6>
                                                     @*Aqui nada mas pueden ver los valores de los productos los administradores*@

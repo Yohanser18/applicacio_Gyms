@@ -4,6 +4,7 @@ using GYMS_TR_AccesoDatos.Datos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GYMS_TR_AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251102161642_CambieoVentaDoubleADecimal")]
+    partial class CambieoVentaDoubleADecimal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,8 +178,7 @@ namespace GYMS_TR_AccesoDatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
+                    b.Property<string>("Emial")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EstadoVenta")
@@ -224,8 +225,8 @@ namespace GYMS_TR_AccesoDatos.Migrations
                     b.Property<int>("MetroCuadrado")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("PrecioPorMetroCuadrado")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("PrecioPorMetroCuadrado")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("int");

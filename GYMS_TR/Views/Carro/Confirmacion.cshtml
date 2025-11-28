@@ -1,6 +1,16 @@
-﻿<div class="text-center">
-	<h1 class="text-info">Confirmacion</h1>
-	<p>Hemos resuvido tu Consulta. Un mienbro de nuestro equipo se contactara pronto  contigo </p>
+﻿@model GYMS_TR_Modelos.Venta
+
+<div class="text-center">
+	@*Aqui si el modelo es diferente de null se creara un venta*@
+	@if(Model != null){
+		<h1 class="text-info">Venta Creada</h1>
+		<p>Venta @Model.Id Creada Satifactoriamente!</p>
+	}
+	else
+	{
+		<h1 class="text-info">Confirmacion</h1>
+		<p>Hemos resuvido tu Consulta. Un mienbro de nuestro equipo se contactara pronto  contigo </p>
+	}
 	<img src="/imagenes/patio.jpg" width="80%" />
 </div>
 

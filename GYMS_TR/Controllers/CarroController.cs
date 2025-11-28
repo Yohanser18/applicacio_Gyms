@@ -22,6 +22,9 @@ namespace GYMS_TR.Controllers
         private readonly IUsuarioAplicacionRepositorio _IcontextUser;
         private readonly IOrdenRepositorio _Icontextord;
         private readonly IOrdenDetalleRepositorio _Icontextorddet;
+        // Aqui vamos a agregar los servicios de vente y ventdetalle//
+        private readonly IVentaRepositorio _IcontextVenta;
+        private readonly IVentaDetalleRepositorio _IcontextVentadetalle;
 
         // Aqui estamos creando una variable de tipo IWebHostEnvironment para poder acceder a la carpeta wwwroot donde esta le carpeta de templetes que donde vamos accedr para utilizar el template del correo.//
         private readonly IWebHostEnvironment _webHostEnvironment;
@@ -36,7 +39,9 @@ namespace GYMS_TR.Controllers
             IWebHostEnvironment webHostEnvironment, 
             IEmailSender emailSender, 
             IOrdenRepositorio icontextord, 
-            IOrdenDetalleRepositorio icontextorddet
+            IOrdenDetalleRepositorio icontextorddet,
+            IVentaRepositorio contextventa,
+            IVentaDetalleRepositorio contextventadetalle
          )
         {
             _IcontextProd = contextprod;
@@ -45,6 +50,8 @@ namespace GYMS_TR.Controllers
             _emailSender = emailSender;
             _Icontextord = icontextord;
             _Icontextorddet = icontextorddet;
+            _IcontextVenta = contextventa;
+            _IcontextVentadetalle = contextventadetalle;
         }
 
         public IActionResult CarroIndex()
@@ -184,69 +191,110 @@ namespace GYMS_TR.Controllers
             var ClaimsIdentity = (ClaimsIdentity)User.Identity;
             var Cliam = ClaimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-            //Aqui vamos acceder a la capeta de wwwroot donde esta le carpeta de templetes que donde vamos accedr para utilizar el templetes//
-            var rutaTemplete = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
-                + "templetes" + Path.DirectorySeparatorChar.ToString() + "PlantillaOrden.html";
-
-            //Aqui estamos definiendo el asunto del correo que vamos a enviar al usuario que esta logueado en la aplicacion o conectado//
-            var subject = "Nueva Orden";
-            // Aqui estamos definiendo el cuerpo del correo que vamos a enviar al usuario que esta logueado en la aplicacion o conectado//
-            string HtmlBody = "";
-            using (StreamReader sr = System.IO.File.OpenText(rutaTemplete))
+            //Aqui vamos a decir que de pendiendo  del tipo de usuario la vent  se crea o se envia//
+            if (User.IsInRole(WC.AdminRole))
             {
-                //Aqui estamos leyendo el contenido del archivo HTML que contiene el template del correo//
-                HtmlBody = sr.ReadToEnd(); 
-            }
-            //Aqui estamos creando un StringBuilder para poder concatenar los productos que estan en el carro de compra//
-            StringBuilder productoListaSB = new StringBuilder();
-            // Aqui estamos recorriendo la lista de productos que estan en el carro de compra//
-            foreach (var prod in productoUsuarioVM.ProductoLista)
-            {
-                productoListaSB.Append($" - Nombre: {prod.NombreProducto} <span style='font-size:14px;'> (ID: {prod.Id})<span/><br>");
-            }
-
-            // Aqui estamos formateando el cuerpo del correo con los datos del usuario y los productos que estan en el carro de compra//
-            string messageBody = string.Format(HtmlBody, 
-                productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
-                productoUsuarioVM.UsuarioAplicacion.Email,
-                productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
-                productoListaSB.ToString());
-
-            // Aqui estamos enviando el correo al Aministrado que esta logueado en la aplicacion o conectado//
-            await _emailSender.SendEmailAsync(WC.EmailAdmin, subject, messageBody);
-            //Aqui vamos a Grabar la orden y detalle en la DB//
-            Orden orden = new Orden() 
-            {
-                UsuarioapliacacioId = Cliam.Value,
-                NombreCompleto = productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
-                Email = productoUsuarioVM.UsuarioAplicacion.Email,
-                Telefono = productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
-                FechaOrden = DateTime.Now
-            };
-            _Icontextord.Agregar(orden);
-            _Icontextord.Grabar();
-            //Aqui va ordenDetalle//
-            foreach (var prod in productoUsuarioVM.ProductoLista)
-            {
-                OrdenDetalle ordenDetalle = new OrdenDetalle()
+                //Crear una nueva vente 
+                // esto es para crea una venta en la vista resumen //
+                Venta venta = new Venta()
                 {
-                    OrdenId = orden.Id,
-                    ProductoId = prod.Id,
+                    CreadoPorUsuarioId = Cliam.Value,
+                    FinalVentaTotal = productoUsuarioVM.ProductoLista.Sum(x => x.TempMetrocuadrado*x.Precio),
+                    Direccion = productoUsuarioVM.UsuarioAplicacion.Direccion,
+                    Ciudad = productoUsuarioVM.UsuarioAplicacion.Ciudad,
+                    Telefono = productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
+                    Email = productoUsuarioVM.UsuarioAplicacion.Email,
+                    NombreCompleto = productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
+                    FechaVenta = DateTime.Now,
+                    EstadoVenta = WC.EstadoPendiente,
                 };
-                _Icontextorddet.Agregar(ordenDetalle);
+                _IcontextVenta.Agregar(venta);
+                _IcontextVenta.Grabar();
+
+                //Aqui vamos a recorrer los de tadelles de la venta //
+                foreach (var prod in productoUsuarioVM.ProductoLista)
+                {
+                    VentaDetalle ventaDetalle = new VentaDetalle()
+                    {
+                        VentaId = venta.Id,
+                        PrecioPorMetroCuadrado = prod.Precio,
+                        MetroCuadrado = prod.TempMetrocuadrado,
+                        ProductoId = prod.Id
+                    };
+                    _IcontextVentadetalle.Agregar(ventaDetalle);
+                }
+                _IcontextVentadetalle.Grabar();
+                //Aqui estamos redirigiendo a la vista Confirmacion despues de crear la venta//
+                return RedirectToAction(nameof(Confirmacion), new {id = venta.Id});
             }
-            _Icontextorddet.Grabar();
+            else
+            {
+                // Envier una vent existente
 
+                //Aqui vamos acceder a la capeta de wwwroot donde esta le carpeta de templetes que donde vamos accedr para utilizar el templetes//
+                var rutaTemplete = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
+                    + "templetes" + Path.DirectorySeparatorChar.ToString() + "PlantillaOrden.html";
 
+                //Aqui estamos definiendo el asunto del correo que vamos a enviar al usuario que esta logueado en la aplicacion o conectado//
+                var subject = "Nueva Orden";
+                // Aqui estamos definiendo el cuerpo del correo que vamos a enviar al usuario que esta logueado en la aplicacion o conectado//
+                string HtmlBody = "";
+                using (StreamReader sr = System.IO.File.OpenText(rutaTemplete))
+                {
+                    //Aqui estamos leyendo el contenido del archivo HTML que contiene el template del correo//
+                    HtmlBody = sr.ReadToEnd();
+                }
+                //Aqui estamos creando un StringBuilder para poder concatenar los productos que estan en el carro de compra//
+                StringBuilder productoListaSB = new StringBuilder();
+                // Aqui estamos recorriendo la lista de productos que estan en el carro de compra//
+                foreach (var prod in productoUsuarioVM.ProductoLista)
+                {
+                    productoListaSB.Append($" - Nombre: {prod.NombreProducto} <span style='font-size:14px;'> (ID: {prod.Id})<span/><br>");
+                }
+
+                // Aqui estamos formateando el cuerpo del correo con los datos del usuario y los productos que estan en el carro de compra//
+                string messageBody = string.Format(HtmlBody,
+                    productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
+                    productoUsuarioVM.UsuarioAplicacion.Email,
+                    productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
+                    productoListaSB.ToString());
+
+                // Aqui estamos enviando el correo al Aministrado que esta logueado en la aplicacion o conectado//
+                await _emailSender.SendEmailAsync(WC.EmailAdmin, subject, messageBody);
+                //Aqui vamos a Grabar la orden y detalle en la DB//
+                Orden orden = new Orden()
+                {
+                    UsuarioapliacacioId = Cliam.Value,
+                    NombreCompleto = productoUsuarioVM.UsuarioAplicacion.NombreCompleto,
+                    Email = productoUsuarioVM.UsuarioAplicacion.Email,
+                    Telefono = productoUsuarioVM.UsuarioAplicacion.PhoneNumber,
+                    FechaOrden = DateTime.Now
+                };
+                _Icontextord.Agregar(orden);
+                _Icontextord.Grabar();
+                //Aqui va ordenDetalle//
+                foreach (var prod in productoUsuarioVM.ProductoLista)
+                {
+                    OrdenDetalle ordenDetalle = new OrdenDetalle()
+                    {
+                        OrdenId = orden.Id,
+                        ProductoId = prod.Id,
+                    };
+                    _Icontextorddet.Agregar(ordenDetalle);
+                }
+                _Icontextorddet.Grabar();
+
+            }
             // Aqui estamos redirigiendo a la vista Confirmacion despues de enviar el correo al usuario que esta logueado en la aplicacion o conectado//
             return RedirectToAction(nameof(Confirmacion)); 
         }
         // Este metodo es para limpiar la session despues de hacer el envio//
-        public IActionResult Confirmacion()
+        public IActionResult Confirmacion(int id=0)
         {
+            Venta venta = _IcontextVenta.ObtenerPrimero(v => v.Id == id);
             //Aqui vamos a limpiar la session cuando agomaos el envio//
             HttpContext.Session.Clear();
-            return View();
+            return View(venta);
         }
         // Este es el metodo para actualizar el corro de compra //
         [HttpPost]

@@ -23,5 +23,12 @@
         public const string Exitosa = "Exitosa";
         // esta es la del error cuando no hagamos algo bien //
         public const string Error = "Error";
+        //esta es la del advertencia //
+        public const string EstadoPendiente = "Pendiente";
+        public const string EstadoAprobado = "Aprobado";
+        public const string EstadoProcesado = "Procesado";
+        public const string EstadoEnviado = "Enviado";
+        public const string EstadoCancelado = "Cancelado";
+        public const string EstadoDevuelto = "Devuelto";
     }
 }
